@@ -322,16 +322,25 @@ body.cursor-click #c-dot  { transform: translate(-50%,-50%) scale(.7); }
   opacity: .18;
 }
 
-/* Brush-stroke sweep behind the title */
-.mural-brush {
+/* Big solid painted color block behind the title — reads as a
+   painted wall panel, the way murals actually look */
+.mural-block {
   position: absolute;
-  left: 0; right: 0; top: 30%;
-  width: 100%; height: 55%;
+  top: 32%; left: 50%;
+  transform: translateX(-50%) rotate(-1.2deg);
+  width: min(760px, 72vw);
+  height: clamp(180px, 28vh, 280px);
+  background:
+    linear-gradient(180deg, rgba(26,15,8,.04) 0%, transparent 40%),
+    linear-gradient(135deg, var(--ochre) 0%, #d9a13a 55%, var(--rust) 100%);
   z-index: 1;
+  opacity: .18;
+  border-radius: 2px;
+  box-shadow: 0 12px 40px rgba(26,15,8,.08);
   pointer-events: none;
 }
 
-/* Paint splatters */
+/* Paint splatters — little dots, not curves */
 .splatter {
   position: absolute;
   border-radius: 50%;
@@ -344,14 +353,17 @@ body.cursor-click #c-dot  { transform: translate(-50%,-50%) scale(.7); }
 .sp-4 { width: 6px;  height: 6px;  top: 62%; left: 46%; background: var(--olive); opacity: .55; }
 .sp-5 { width: 11px; height: 11px; top: 70%; right: 30%; background: var(--coral); opacity: .45; }
 
-/* Paint drips (elongated) */
+/* Vertical paint drips — straight lines running down,
+   like paint actually drips on a wall */
 .drip {
   position: absolute;
-  width: 6px; pointer-events: none; z-index: 1;
+  width: 5px; pointer-events: none; z-index: 1;
   border-radius: 0 0 50% 50%;
 }
-.dr-1 { height: 60px; top: 52%; left: 18%; background: linear-gradient(var(--rust), transparent); opacity: .35; }
-.dr-2 { height: 42px; top: 44%; right: 22%; background: linear-gradient(var(--ochre), transparent); opacity: .4; }
+.dr-1 { height: 72px; top: 14%; left: 22%; background: linear-gradient(var(--rust), transparent); opacity: .4; }
+.dr-2 { height: 54px; top: 12%; right: 28%; background: linear-gradient(var(--ochre), transparent); opacity: .45; }
+.dr-3 { height: 88px; top: 18%; left: 46%; background: linear-gradient(var(--plum), transparent); opacity: .32; width: 4px; }
+.dr-4 { height: 46px; top: 16%; right: 14%; background: linear-gradient(var(--olive), transparent); opacity: .42; width: 4px; }
 
 /* Location sticker */
 .hero-sticker {
@@ -390,35 +402,58 @@ body.cursor-click #c-dot  { transform: translate(-50%,-50%) scale(.7); }
   box-shadow: 0 2px 5px rgba(26,15,8,.12);
 }
 
-/* Painter's signature — a single flourish in the bottom-left
-   corner, like an artist's mark on a finished canvas */
-.mural-sig {
+/* Museum exhibition plaque — replaces the squiggle signature.
+   Typographic, framed, the kind of placard you see next to a
+   gallery piece. Positioned bottom-right of the hero. */
+.mural-plaque {
   position: absolute;
-  bottom: 5.5%;
-  left: 4.5%;
-  width: 200px;
+  bottom: 5%;
+  right: 5%;
   z-index: 5;
-  pointer-events: none;
-  transform: rotate(-3deg);
-  opacity: .85;
+  background: var(--cream);
+  border: 1px solid rgba(26,15,8,.14);
+  border-left: 3px solid var(--rust);
+  padding: .85rem 1.3rem .9rem;
+  max-width: 260px;
+  box-shadow: 0 8px 22px rgba(26,15,8,.12),
+              0 1px 0 rgba(26,15,8,.05);
+  transform: rotate(-1deg);
 }
-.sig-stroke {
-  width: 100%;
-  height: auto;
-  display: block;
-  filter: drop-shadow(0 1px 0 rgba(26,15,8,.08));
-}
-.sig-year {
-  display: block;
-  text-align: right;
-  font-size: .85rem;
-  letter-spacing: .22em;
-  color: color-mix(in srgb, var(--ink) 55%, transparent);
-  margin-top: -.35rem;
-  padding-right: .4rem;
+.pl-head {
   font-family: var(--font-b);
-  font-weight: 500;
+  font-size: .62rem;
+  letter-spacing: .28em;
   text-transform: uppercase;
+  font-weight: 500;
+  color: color-mix(in srgb, var(--ink) 48%, transparent);
+  margin-bottom: .4rem;
+}
+.pl-title {
+  font-family: var(--font-d);
+  font-weight: 900;
+  font-size: 1.55rem;
+  color: var(--ink);
+  letter-spacing: .01em;
+  line-height: 1;
+  margin-bottom: .25rem;
+}
+.pl-sub {
+  font-family: var(--font-d);
+  font-style: italic;
+  font-weight: 300;
+  font-size: .88rem;
+  color: color-mix(in srgb, var(--ink) 68%, transparent);
+  line-height: 1.25;
+  margin-bottom: .55rem;
+}
+.pl-meta {
+  font-family: var(--font-b);
+  font-size: .6rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--ink) 42%, transparent);
+  padding-top: .4rem;
+  border-top: 1px dashed rgba(26,15,8,.14);
 }
 
 /* Centerpiece text (painted lettering) */
@@ -737,7 +772,9 @@ body.cursor-click #c-dot  { transform: translate(-50%,-50%) scale(.7); }
   .hero-collage .p1 { width: 160px; top: 10%; left: 2%; }
   .hero-collage .p2 { width: 150px; top: 12%; right: 2%; }
   .hero-collage .p3 { display: none; }
-  .mural-sig { width: 150px; bottom: 3%; left: 3%; }
+  .mural-plaque { max-width: 210px; padding: .7rem 1rem .75rem; bottom: 3%; right: 3%; }
+  .pl-title { font-size: 1.3rem; }
+  .mural-block { height: clamp(140px, 22vh, 220px); }
   .about-section, .visit-section { grid-template-columns: 1fr; }
   .about-collage, .visit-imagery { min-height: 380px; }
   .gallery-wall { grid-template-columns: 1fr 1fr; }
@@ -747,7 +784,8 @@ body.cursor-click #c-dot  { transform: translate(-50%,-50%) scale(.7); }
 @media (max-width: 768px) {
   .nav-links { display: none; }
   .hero-collage { display: none; }
-  .mural-sig { display: none; }
+  .mural-plaque { display: none; }
+  .mural-block { top: 30%; }
   .hero-sticker { top: calc(var(--nav-h) + .8rem); font-size: 1rem; padding: .4rem .9rem; }
   .hero-title { gap: .6rem; }
   .origins-row, .menu-grid, .events-grid, .gallery-wall { grid-template-columns: 1fr; }
