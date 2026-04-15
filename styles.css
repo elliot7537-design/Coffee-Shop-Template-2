@@ -295,6 +295,25 @@ body.cursor-click #c-dot  { transform: translate(-50%,-50%) scale(.7); }
   isolation: isolate;
 }
 
+/* ── Main artwork — centered background image (z:1, text sits on top) ── */
+.hero-main-art {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  pointer-events: none;
+}
+.hero-main-img {
+  display: block;
+  width: clamp(260px, 30vw, 460px);
+  height: auto;
+  max-height: 78vh;
+  object-fit: contain;
+  filter: sepia(.08) contrast(1.04);
+  opacity: .92;
+}
+
 /* ── The big overlapping words (z:3) — the composition's visual anchor ── */
 .hw {
   position: absolute;

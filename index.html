@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700;1,9..144,900&family=Caveat:wght@400;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=11" />
+  <link rel="stylesheet" href="styles.css?v=12" />
 </head>
 <body>
 
@@ -36,6 +36,16 @@
 
   <!-- ═══════════════════ HERO — Gallery Composition ═══════════════════ -->
   <section id="hero">
+
+    <!-- Main artwork — centered background (z:1, behind all text) -->
+    <!-- Vermeer, Girl with a Pearl Earring — via user-supplied Pinterest URL -->
+    <div class="hero-main-art" aria-hidden="true">
+      <img class="hero-main-img"
+           src="https://i.pinimg.com/474x/fc/48/07/fc4807cbf5de01f91e026a7d7d9209b5.jpg"
+           data-fallback="https://picsum.photos/seed/bruma-portrait/520/820"
+           alt=""
+           loading="eager" />
+    </div>
 
     <!-- Big words sit on the cream hero — typography IS the art (z:3) -->
     <div class="hw hw-word-1" data-es="EL" data-en="THE" aria-hidden="true">EL</div>
@@ -451,6 +461,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=11"></script>
+  <script src="script.js?v=12"></script>
 </body>
 </html>
