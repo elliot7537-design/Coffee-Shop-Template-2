@@ -297,9 +297,9 @@ body.cursor-click #c-dot  { transform: translate(-50%,-50%) scale(.7); }
 
 /* ── Main artwork — centered background image ──
    z:1 so ALL text (z:3+) sits on top.
-   mix-blend-mode:multiply makes the painting's dark
-   background integrate into the cream page color,
-   giving the appearance of a transparent-bg image.  */
+   Correct Wikimedia Commons filename: Meisje_met_de_parel.jpg
+   No mix-blend-mode — plain opacity so the painting is clearly
+   visible on the cream background.                             */
 .hero-main-art {
   position: absolute;
   top: 50%;
@@ -312,11 +312,10 @@ body.cursor-click #c-dot  { transform: translate(-50%,-50%) scale(.7); }
   width: clamp(280px, 34vw, 520px);
   height: clamp(380px, 62vh, 820px);
   background:
-    url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/1665_Girl_with_a_Pearl_Earring.jpg/800px-1665_Girl_with_a_Pearl_Earring.jpg')
+    url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Meisje_met_de_parel.jpg/800px-Meisje_met_de_parel.jpg')
     center/contain no-repeat;
-  mix-blend-mode: multiply;
-  filter: sepia(.1) contrast(1.08) brightness(1.06);
-  opacity: .72;
+  filter: sepia(.12) brightness(.9);
+  opacity: .55;
 }
 
 /* ── The big overlapping words — all in front of artwork (z:3) ── */
