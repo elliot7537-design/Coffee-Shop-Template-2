@@ -7,17 +7,62 @@
 
 'use strict';
 
+/* Register a default Trusted Types policy so innerHTML assignments
+   still work on hosts that enforce require-trusted-types-for 'script'
+   in their CSP (Netlify/Vercel/Pages w/ strict security headers). */
+try {
+  if (window.trustedTypes && window.trustedTypes.createPolicy) {
+    window.trustedTypes.createPolicy('default', {
+      createHTML: (s) => s,
+      createScript: (s) => s,
+      createScriptURL: (s) => s
+    });
+  }
+} catch (e) { /* policy already exists or blocked — ignore */ }
+
 /* ─────────────────────────────────────────────
    1. LANGUAGE TOGGLE
    Uses addEventListener (not inline onclick) so
    it keeps working under strict Content Security
-   Policies on hosted previews.
+   Policies on hosted previews. Uses a small parser
+   for values containing <em>/<br> so we never need
+   innerHTML (robust against Trusted Types too).
    ───────────────────────────────────────────── */
 let currentLang = 'es';
 try {
   const stored = localStorage.getItem('bruma-lang');
   if (stored === 'es' || stored === 'en') currentLang = stored;
 } catch (e) { /* localStorage may be blocked — fall back to default */ }
+
+// Safely render a data-es/data-en value into an element.
+// Supports plain text and the small HTML subset used in our
+// headings: <br>, <br/>, <em>text</em>.
+function renderI18n(el, val) {
+  if (val == null) return;
+  // Fast path — no markup at all
+  if (val.indexOf('<') === -1) {
+    el.textContent = val;
+    return;
+  }
+  // Parse the tiny subset without touching innerHTML
+  while (el.firstChild) el.removeChild(el.firstChild);
+  const tokens = val.split(/(<br\s*\/?>|<em>|<\/em>)/gi);
+  let em = false;
+  for (const tok of tokens) {
+    if (!tok) continue;
+    const t = tok.toLowerCase();
+    if (t === '<em>')      { em = true;  continue; }
+    if (t === '</em>')     { em = false; continue; }
+    if (t.startsWith('<br')) { el.appendChild(document.createElement('br')); continue; }
+    if (em) {
+      const emEl = document.createElement('em');
+      emEl.textContent = tok;
+      el.appendChild(emEl);
+    } else {
+      el.appendChild(document.createTextNode(tok));
+    }
+  }
+}
 
 function setLang(lang) {
   if (lang !== 'es' && lang !== 'en') lang = 'es';
@@ -29,15 +74,19 @@ function setLang(lang) {
   if (btnEs) btnEs.classList.toggle('active', lang === 'es');
   if (btnEn) btnEn.classList.toggle('active', lang === 'en');
 
-  document.querySelectorAll('[data-es]').forEach(el => {
+  const els = document.querySelectorAll('[data-es]');
+  for (let i = 0; i < els.length; i++) {
+    const el = els[i];
     const val = lang === 'es' ? el.dataset.es : el.dataset.en;
-    if (val != null) el.innerHTML = val;
-  });
+    renderI18n(el, val);
+  }
 
-  document.querySelectorAll('[data-es-placeholder]').forEach(el => {
+  const phs = document.querySelectorAll('[data-es-placeholder]');
+  for (let i = 0; i < phs.length; i++) {
+    const el = phs[i];
     const val = lang === 'es' ? el.dataset.esPlaceholder : el.dataset.enPlaceholder;
     if (val != null) el.placeholder = val;
-  });
+  }
 
   document.title = lang === 'es'
     ? 'Bruma — Café & Arte · CDMX'
@@ -51,10 +100,7 @@ window.setLang = setLang;
 
 // Wire up the buttons (any element with [data-lang])
 document.querySelectorAll('[data-lang]').forEach(btn => {
-  btn.addEventListener('click', (e) => {
-    e.preventDefault();
-    setLang(btn.dataset.lang);
-  });
+  btn.addEventListener('click', () => setLang(btn.dataset.lang));
 });
 
 setLang(currentLang);
