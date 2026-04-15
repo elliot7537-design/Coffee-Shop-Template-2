@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700;1,9..144,900&family=Caveat:wght@400;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=6" />
+  <link rel="stylesheet" href="styles.css?v=7" />
 </head>
 <body>
 
@@ -34,65 +34,53 @@
     </div>
   </nav>
 
-  <!-- ═══════════════════ HERO — Gallery Opening ═══════════════════ -->
+  <!-- ═══════════════════ HERO — Gallery Composition ═══════════════════ -->
   <section id="hero">
 
-    <!-- Deep painted left panel: the gallery wall -->
-    <div class="hero-panel" aria-hidden="true">
-      <div class="hero-panel-glow"></div>
+    <!-- Words BEHIND the portrait (z:3) -->
+    <!-- These get partially covered by the portrait photo, creating the layered art effect -->
+    <div class="hw hw-word-1" data-es="EL" data-en="THE" aria-hidden="true">EL</div>
+    <h1 class="hw hw-word-2" data-es="CAFÉ" data-en="CAFÉ">CAFÉ</h1>
+    <div class="hw hw-word-3" data-es="ES" data-en="IS" aria-hidden="true">ES</div>
+
+    <!-- Central portrait photo — the featured "artwork" (z:5) -->
+    <div class="hero-portrait" aria-hidden="true">
+      <div class="hero-portrait-img"></div>
     </div>
 
-    <!-- Right: atmospheric full-bleed photo — the featured artwork -->
-    <div class="hero-photo" aria-hidden="true">
-      <div class="hero-photo-img"></div>
-      <div class="hero-photo-fade"></div>
-    </div>
+    <!-- Words IN FRONT / beside the portrait (z:7) -->
+    <div class="hw hw-word-4" data-es="ARTE" data-en="ART" aria-hidden="true">ARTE</div>
+    <!-- Script accent floating between the big words -->
+    <p class="hero-script handwritten" data-es="Siempre" data-en="Always" aria-hidden="true">Siempre</p>
 
-    <!-- Thin accent stripe — left-edge frame element -->
-    <div class="hero-stripe" aria-hidden="true"></div>
+    <!-- Small editorial details -->
+    <span class="hero-reg-plus" aria-hidden="true">+</span>
+    <p class="hero-script-brand handwritten" aria-hidden="true">Bruma</p>
+    <span class="hero-label-right" data-es="MENÚ" data-en="MENU" aria-hidden="true">MENÚ</span>
 
-    <!-- Registration crosshairs — fine art / print detail -->
-    <span class="hero-xhair hx-1" aria-hidden="true"></span>
-    <span class="hero-xhair hx-2" aria-hidden="true"></span>
-
-    <!-- Main editorial text (on the dark panel) -->
-    <div class="hero-text">
-
-      <p class="hero-byline">
-        <span class="hb-num">CAT. 001</span>
-        <span class="hb-dot" aria-hidden="true">◆</span>
-        <span class="hb-loc" data-es="Roma Norte · CDMX" data-en="Roma Norte · CDMX">Roma Norte · CDMX</span>
+    <!-- Info block — upper right (like the reference description panel) -->
+    <div class="hero-info">
+      <p class="hero-info-desc body-text"
+         data-es="Donde el arte y el café se encuentran — cada taza es una experiencia, cada pared una conversación."
+         data-en="Where art and coffee meet — every cup is an experience, every wall a conversation.">
+        Donde el arte y el café se encuentran — cada taza es una experiencia, cada pared una conversación.
       </p>
-
-      <p class="hero-brand" aria-label="Bruma">BRUMA</p>
-
-      <div class="hero-rule" aria-hidden="true"></div>
-
-      <h1 class="hero-title">
-        <span class="ht-cafe handwritten" data-es="Café" data-en="Coffee">Café</span>
-        <span class="ht-amp" aria-hidden="true">&amp;</span>
-        <span class="ht-arte" data-es="Arte" data-en="Art">Arte</span>
-      </h1>
-
-      <p class="hero-sub body-text"
-         data-es="Donde cada sorbo inspira y cada pared cuenta una historia — desde la Colonia Roma, CDMX."
-         data-en="Where every sip inspires and every wall tells a story — from Colonia Roma, CDMX.">
-        Donde cada sorbo inspira y cada pared cuenta una historia — desde la Colonia Roma, CDMX.
+      <p class="hero-info-hours">
+        <span data-es="ABIERTO DIARIAMENTE" data-en="OPEN DAILY">ABIERTO DIARIAMENTE</span>
+        <span class="hih-time">08:00 AM — 22:00 PM</span>
       </p>
-
-      <div class="hero-ctas">
-        <a href="#cafe" class="pill-btn pill-light magnetic" data-es="Ver el menú" data-en="See the menu">Ver el menú</a>
-        <a href="#arte" class="pill-btn pill-light-ghost magnetic" data-es="Ver la galería" data-en="See the gallery">Ver la galería</a>
-      </div>
-
     </div>
 
-    <!-- Vertical year mark — decorative right edge -->
-    <p class="hero-est" aria-hidden="true">EST. MMXVIII</p>
+    <!-- CTA block — lower-left (styled like reference's dark "BUY TICKET" element) -->
+    <div class="hero-cta-block">
+      <a href="#cafe" class="hcta-primary magnetic" data-es="Ver el menú" data-en="See the menu">Ver el menú</a>
+      <a href="#arte" class="hcta-secondary magnetic" data-es="Ver la galería" data-en="See the gallery">Ver la galería</a>
+    </div>
 
-    <!-- Handwritten caption floating over the photo -->
-    <p class="hero-photo-caption handwritten"
-       data-es="colección permanente" data-en="permanent collection">colección permanente</p>
+    <!-- Location — bottom-center -->
+    <p class="hero-location" aria-hidden="true">
+      <span data-es="Roma Norte · CDMX · Est. MMXVIII" data-en="Roma Norte · CDMX · Est. MMXVIII">Roma Norte · CDMX · Est. MMXVIII</span>
+    </p>
 
   </section>
 
@@ -470,6 +458,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=6"></script>
+  <script src="script.js?v=7"></script>
 </body>
 </html>
