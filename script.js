@@ -9,31 +9,53 @@
 
 /* ─────────────────────────────────────────────
    1. LANGUAGE TOGGLE
+   Uses addEventListener (not inline onclick) so
+   it keeps working under strict Content Security
+   Policies on hosted previews.
    ───────────────────────────────────────────── */
-let currentLang = localStorage.getItem('bruma-lang') || 'es';
+let currentLang = 'es';
+try {
+  const stored = localStorage.getItem('bruma-lang');
+  if (stored === 'es' || stored === 'en') currentLang = stored;
+} catch (e) { /* localStorage may be blocked — fall back to default */ }
 
-window.setLang = function(lang) {
+function setLang(lang) {
+  if (lang !== 'es' && lang !== 'en') lang = 'es';
   currentLang = lang;
   document.documentElement.lang = lang;
 
-  document.getElementById('btn-es').classList.toggle('active', lang === 'es');
-  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  const btnEs = document.getElementById('btn-es');
+  const btnEn = document.getElementById('btn-en');
+  if (btnEs) btnEs.classList.toggle('active', lang === 'es');
+  if (btnEn) btnEn.classList.toggle('active', lang === 'en');
 
   document.querySelectorAll('[data-es]').forEach(el => {
     const val = lang === 'es' ? el.dataset.es : el.dataset.en;
-    if (val !== undefined) el.innerHTML = val;
+    if (val != null) el.innerHTML = val;
   });
 
   document.querySelectorAll('[data-es-placeholder]').forEach(el => {
-    el.placeholder = lang === 'es' ? el.dataset.esPlaceholder : el.dataset.enPlaceholder;
+    const val = lang === 'es' ? el.dataset.esPlaceholder : el.dataset.enPlaceholder;
+    if (val != null) el.placeholder = val;
   });
 
   document.title = lang === 'es'
     ? 'Bruma — Café & Arte · CDMX'
     : 'Bruma — Coffee & Art · CDMX';
 
-  localStorage.setItem('bruma-lang', lang);
-};
+  try { localStorage.setItem('bruma-lang', lang); } catch (e) { /* ignore */ }
+}
+
+// Expose globally just in case anything else calls it
+window.setLang = setLang;
+
+// Wire up the buttons (any element with [data-lang])
+document.querySelectorAll('[data-lang]').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    setLang(btn.dataset.lang);
+  });
+});
 
 setLang(currentLang);
 
