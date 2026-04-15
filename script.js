@@ -393,10 +393,21 @@ setLang(currentLang);
    and featured drinks photos.
    ───────────────────────────────────────────── */
 (function initImgFallbacks() {
+  function swap(img) {
+    const fallback = img.dataset.fallback;
+    if (fallback && img.src !== fallback) img.src = fallback;
+  }
   document.querySelectorAll('img[data-fallback]').forEach(img => {
+    // Image may already have failed before this script executed
+    // (script.js runs at end of body; broken images fire error
+    // during HTML parsing). Check for the "loaded but no pixels"
+    // state that indicates a failed load.
+    if (img.complete && img.naturalWidth === 0) {
+      swap(img);
+      return;
+    }
     img.addEventListener('error', function onErr() {
-      const fallback = img.dataset.fallback;
-      if (fallback && img.src !== fallback) img.src = fallback;
+      swap(img);
       img.removeEventListener('error', onErr);
     });
   });
