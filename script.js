@@ -1,84 +1,61 @@
-/* =============================================
-   BRUMA — script.js
-   ============================================= */
+// === BRUMA — Language & Interactions ===
 
-// --- Language Toggle ---
-let currentLang = 'es';
-
-const langToggle = document.getElementById('langToggle');
-const esOpt = document.getElementById('es-opt');
-const enOpt = document.getElementById('en-opt');
+let currentLang = localStorage.getItem('bruma-lang') || 'es';
 
 function setLang(lang) {
   currentLang = lang;
   document.documentElement.lang = lang;
 
-  // Toggle active state on buttons
-  esOpt.classList.toggle('active', lang === 'es');
-  enOpt.classList.toggle('active', lang === 'en');
+  // Toggle button active states
+  document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
 
-  // Update all elements with data-es / data-en attributes
+  // Update all text nodes with data-es / data-en
   document.querySelectorAll('[data-es]').forEach(el => {
-    const text = lang === 'es' ? el.dataset.es : el.dataset.en;
-    if (!text) return;
-    // Use innerHTML to support <br/> and <em> in attribute values
-    el.innerHTML = text;
+    const val = lang === 'es' ? el.dataset.es : el.dataset.en;
+    if (val !== undefined) el.innerHTML = val;
   });
 
-  // Update input placeholders separately
+  // Placeholders
   document.querySelectorAll('[data-es-placeholder]').forEach(el => {
     el.placeholder = lang === 'es' ? el.dataset.esPlaceholder : el.dataset.enPlaceholder;
   });
 
-  // Update page title
   document.title = lang === 'es'
     ? 'Bruma — Café & Arte · CDMX'
     : 'Bruma — Coffee & Art · CDMX';
 
-  // Persist preference
   localStorage.setItem('bruma-lang', lang);
 }
 
-langToggle.addEventListener('click', () => {
-  setLang(currentLang === 'es' ? 'en' : 'es');
-});
+// Apply saved language on load
+setLang(currentLang);
 
-// Restore saved language
-const savedLang = localStorage.getItem('bruma-lang');
-if (savedLang && savedLang !== 'es') setLang(savedLang);
-
-
-// --- Nav scroll effect ---
+// === Sticky nav ===
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 60);
+  nav.classList.toggle('scrolled', window.scrollY > 50);
 }, { passive: true });
 
-
-// --- Scroll fade-in ---
-const fadeEls = document.querySelectorAll(
-  '.about-text-col, .about-image-col, .origin-card, .menu-col, ' +
-  '.art-intro, .art-item, .exhibition-card, .art-quote, ' +
-  '.visit-text, .stat, .footer-cta h2'
+// === Scroll reveal ===
+const revealTargets = document.querySelectorAll(
+  '.about-text, .about-scrapbook, .origin-card, .menu-board, ' +
+  '.art-header, .art-polaroid, .ex-card, .art-quote, ' +
+  '.event-card, .visit-info, .visit-img-col, .footer-cta h2, .footer-cta .cta-row'
 );
 
-fadeEls.forEach(el => el.classList.add('fade-in'));
+revealTargets.forEach((el, i) => {
+  el.classList.add('reveal');
+  el.style.transitionDelay = `${(i % 4) * 0.1}s`;
+});
 
 const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
     }
   });
-}, { threshold: 0.12 });
+}, { threshold: 0.1 });
 
-fadeEls.forEach(el => observer.observe(el));
-
-
-// --- Staggered fade for grid children ---
-document.querySelectorAll('.origins-grid, .menu-cols, .exhibition-grid').forEach(grid => {
-  Array.from(grid.children).forEach((child, i) => {
-    child.style.transitionDelay = `${i * 0.12}s`;
-  });
-});
+revealTargets.forEach(el => observer.observe(el));
