@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700;1,9..144,900&family=Caveat:wght@400;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=13" />
+  <link rel="stylesheet" href="styles.css?v=14" />
 </head>
 <body>
 
@@ -43,6 +43,7 @@
     <ul class="nav-links">
       <li><a href="#nosotros" data-es="Nosotros"  data-en="About"   data-scramble>Nosotros</a></li>
       <li><a href="#cafe"     data-es="Café"      data-en="Coffee"  data-scramble>Café</a></li>
+      <li><a href="#bebidas"  data-es="Bebidas"   data-en="Drinks"  data-scramble>Bebidas</a></li>
       <li><a href="#arte"     data-es="Arte"      data-en="Art"     data-scramble>Arte</a></li>
       <li><a href="#visita"   data-es="Visítanos" data-en="Visit"   data-scramble>Visítanos</a></li>
     </ul>
@@ -240,6 +241,130 @@
     </div>
 
     <div class="torn-edge bottom"></div>
+  </section>
+
+  <!-- ═══════════════════ FEATURED DRINKS ═══════════════════ -->
+  <section id="bebidas" class="drinks-section">
+    <div class="drinks-header js-reveal">
+      <span class="section-tag" data-es="02.5 — Especialidades" data-en="02.5 — Specialties">02.5 — Especialidades</span>
+      <h2 class="paint-reveal"
+          data-es="Bebidas que son <em>arte.</em>"
+          data-en="Drinks that are <em>art.</em>">Bebidas que son <em>arte.</em></h2>
+      <p class="drinks-subtitle body-text"
+         data-es="Cinco favoritos que resumen lo que somos — tradición mexicana, técnica moderna, cada taza servida con intención."
+         data-en="Five favorites that sum up who we are — Mexican tradition, modern technique, every cup poured with intent.">
+        Cinco favoritos que resumen lo que somos — tradición mexicana, técnica moderna, cada taza servida con intención.
+      </p>
+    </div>
+
+    <div class="drinks-row">
+
+      <!-- 01. Café de Olla — Mexican tradition -->
+      <article class="drink-card js-reveal" style="--d:0s">
+        <span class="drink-num">01</span>
+        <img class="drink-img"
+             src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&h=700&fit=crop&q=85"
+             data-fallback="https://picsum.photos/seed/cafedeolla/600/700"
+             alt="" loading="lazy" />
+        <div class="drink-info">
+          <h3 data-es="Café de Olla" data-en="Café de Olla">Café de Olla</h3>
+          <p class="handwritten drink-note"
+             data-es="piloncillo · canela · clavo"
+             data-en="brown sugar · cinnamon · clove">piloncillo · canela · clavo</p>
+          <p class="drink-desc"
+             data-es="La tradición mexicana en cada sorbo, servida en barro."
+             data-en="Mexican tradition in every sip, served in clay.">
+            La tradición mexicana en cada sorbo, servida en barro.
+          </p>
+          <div class="drink-price">$70</div>
+        </div>
+      </article>
+
+      <!-- 02. Macchiato -->
+      <article class="drink-card js-reveal" style="--d:.08s">
+        <span class="drink-num">02</span>
+        <img class="drink-img"
+             src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=600&h=700&fit=crop&q=85"
+             data-fallback="https://picsum.photos/seed/macchiato/600/700"
+             alt="" loading="lazy" />
+        <div class="drink-info">
+          <h3 data-es="Macchiato" data-en="Macchiato">Macchiato</h3>
+          <p class="handwritten drink-note"
+             data-es="espresso · manchado de leche"
+             data-en="espresso · marked with milk">espresso · manchado de leche</p>
+          <p class="drink-desc"
+             data-es="Dos onzas de intensidad con una caricia de crema."
+             data-en="Two ounces of intensity with a caress of foam.">
+            Dos onzas de intensidad con una caricia de crema.
+          </p>
+          <div class="drink-price">$75</div>
+        </div>
+      </article>
+
+      <!-- 03. Latte -->
+      <article class="drink-card js-reveal" style="--d:.16s">
+        <span class="drink-num">03</span>
+        <img class="drink-img"
+             src="https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?w=600&h=700&fit=crop&q=85"
+             data-fallback="https://picsum.photos/seed/lattebruma/600/700"
+             alt="" loading="lazy" />
+        <div class="drink-info">
+          <h3 data-es="Latte de Autor" data-en="Signature Latte">Latte de Autor</h3>
+          <p class="handwritten drink-note"
+             data-es="sedoso · cremoso · arte en la taza"
+             data-en="silky · creamy · art in the cup">sedoso · cremoso · arte en la taza</p>
+          <p class="drink-desc"
+             data-es="Nuestro espresso con leche de avena vaporizada."
+             data-en="Our espresso with steamed oat milk.">
+            Nuestro espresso con leche de avena vaporizada.
+          </p>
+          <div class="drink-price">$95</div>
+        </div>
+      </article>
+
+      <!-- 04. Matcha -->
+      <article class="drink-card js-reveal" style="--d:.24s">
+        <span class="drink-num">04</span>
+        <img class="drink-img"
+             src="https://images.unsplash.com/photo-1515823064-d6e0c04616a7?w=600&h=700&fit=crop&q=85"
+             data-fallback="https://picsum.photos/seed/matcharoma/600/700"
+             alt="" loading="lazy" />
+        <div class="drink-info">
+          <h3 data-es="Matcha Roma" data-en="Roma Matcha">Matcha Roma</h3>
+          <p class="handwritten drink-note"
+             data-es="ceremonial · vegetal · umami"
+             data-en="ceremonial · grassy · umami">ceremonial · vegetal · umami</p>
+          <p class="drink-desc"
+             data-es="Té ceremonial de Uji batido a mano en chawan."
+             data-en="Ceremonial Uji matcha whisked by hand in chawan.">
+            Té ceremonial de Uji batido a mano en chawan.
+          </p>
+          <div class="drink-price">$95</div>
+        </div>
+      </article>
+
+      <!-- 05. Pour Over -->
+      <article class="drink-card js-reveal" style="--d:.32s">
+        <span class="drink-num">05</span>
+        <img class="drink-img"
+             src="https://images.unsplash.com/photo-1485808191679-5f86510681a2?w=600&h=700&fit=crop&q=85"
+             data-fallback="https://picsum.photos/seed/pourover/600/700"
+             alt="" loading="lazy" />
+        <div class="drink-info">
+          <h3 data-es="Pour Over V60" data-en="V60 Pour Over">Pour Over V60</h3>
+          <p class="handwritten drink-note"
+             data-es="limpio · floral · cada nota viva"
+             data-en="clean · floral · every note alive">limpio · floral · cada nota viva</p>
+          <p class="drink-desc"
+             data-es="Método lento que revela el terruño del grano."
+             data-en="Slow method that reveals the bean's terroir.">
+            Método lento que revela el terruño del grano.
+          </p>
+          <div class="drink-price">$90</div>
+        </div>
+      </article>
+
+    </div>
   </section>
 
   <!-- ═══════════════════ REVERSE MARQUEE ═══════════════════ -->
@@ -479,6 +604,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=12"></script>
+  <script src="script.js?v=14"></script>
 </body>
 </html>

@@ -386,17 +386,19 @@ setLang(currentLang);
 
 
 /* ─────────────────────────────────────────────
-   12. HERO IMAGE FALLBACK
-   If the main artwork URL fails, swap to the
-   data-fallback src. addEventListener — CSP safe.
+   12. IMAGE FALLBACK
+   Any <img data-fallback="..."> that fails to load
+   swaps to the fallback URL. CSP-safe (no inline
+   onerror attributes). Applies to hero painting
+   and featured drinks photos.
    ───────────────────────────────────────────── */
-(function initHeroImgFallback() {
-  const img = document.querySelector('.hero-main-img');
-  if (!img || img.tagName !== 'IMG') return;
-  img.addEventListener('error', function onErr() {
-    const fallback = img.dataset.fallback;
-    if (fallback && img.src !== fallback) img.src = fallback;
-    img.removeEventListener('error', onErr);
+(function initImgFallbacks() {
+  document.querySelectorAll('img[data-fallback]').forEach(img => {
+    img.addEventListener('error', function onErr() {
+      const fallback = img.dataset.fallback;
+      if (fallback && img.src !== fallback) img.src = fallback;
+      img.removeEventListener('error', onErr);
+    });
   });
 })();
 
