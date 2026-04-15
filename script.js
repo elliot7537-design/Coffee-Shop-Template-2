@@ -386,6 +386,25 @@ setLang(currentLang);
 
 
 /* ─────────────────────────────────────────────
-   12. MARQUEE speed on hover handled via CSS
+   12. HERO IMAGE FALLBACK
+   If the main artwork URL fails (CDN blocked,
+   404, etc.) swap to the data-fallback src.
+   Uses addEventListener — CSP safe.
+   ───────────────────────────────────────────── */
+(function initHeroImgFallback() {
+  const img = document.querySelector('.hero-main-img');
+  if (!img || img.tagName !== 'IMG') return;
+  img.addEventListener('error', function onErr() {
+    const fallback = img.dataset.fallback;
+    if (fallback && img.src !== fallback) {
+      img.src = fallback;
+    }
+    img.removeEventListener('error', onErr);
+  });
+})();
+
+
+/* ─────────────────────────────────────────────
+   13. MARQUEE speed on hover handled via CSS
        (animation-play-state: paused)
    ───────────────────────────────────────────── */

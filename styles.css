@@ -309,11 +309,11 @@ body.cursor-click #c-dot  { transform: translate(-50%,-50%) scale(.7); }
   pointer-events: none;
 }
 .hero-main-img {
+  display: block;
   width: clamp(280px, 34vw, 520px);
   height: clamp(380px, 62vh, 820px);
-  background:
-    url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Meisje_met_de_parel.jpg/800px-Meisje_met_de_parel.jpg')
-    center/contain no-repeat;
+  object-fit: contain;
+  object-position: center top;
   filter: sepia(.12) brightness(.9);
   opacity: .55;
 }
@@ -542,6 +542,7 @@ body.cursor-click #c-dot  { transform: translate(-50%,-50%) scale(.7); }
   .hero-main-img {
     width: clamp(180px, 55vw, 300px);
     height: clamp(240px, 72vw, 420px);
+    object-fit: contain;
   }
   .hero-info,
   .hero-label-right { display: none; }
