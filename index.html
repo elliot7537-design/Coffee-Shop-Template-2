@@ -6,355 +6,433 @@
   <title>Bruma — Café &amp; Arte · CDMX</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,700;0,900;1,300;1,700;1,900&family=Caveat:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700;1,9..144,900&family=Caveat:wght@400;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- NAV -->
+  <!-- Film grain overlay -->
+  <canvas id="grain" aria-hidden="true"></canvas>
+
+  <!-- Custom cursor -->
+  <div id="c-dot"  aria-hidden="true"></div>
+  <div id="c-ring" aria-hidden="true"></div>
+
+  <!-- ═══════════════════ NAV ═══════════════════ -->
   <nav id="nav">
-    <a href="#" class="nav-logo">BRUMA</a>
+    <a href="#" class="nav-logo" data-scramble>BRUMA</a>
     <ul class="nav-links">
-      <li><a href="#nosotros" data-es="Nosotros" data-en="About">Nosotros</a></li>
-      <li><a href="#cafe" data-es="Café" data-en="Coffee">Café</a></li>
-      <li><a href="#arte" data-es="Arte" data-en="Art">Arte</a></li>
-      <li><a href="#visita" data-es="Visítanos" data-en="Visit">Visítanos</a></li>
+      <li><a href="#nosotros" data-es="Nosotros"  data-en="About"   data-scramble>Nosotros</a></li>
+      <li><a href="#cafe"     data-es="Café"      data-en="Coffee"  data-scramble>Café</a></li>
+      <li><a href="#arte"     data-es="Arte"      data-en="Art"     data-scramble>Arte</a></li>
+      <li><a href="#visita"   data-es="Visítanos" data-en="Visit"   data-scramble>Visítanos</a></li>
     </ul>
     <div class="lang-switch">
       <button class="lang-btn active" id="btn-es" onclick="setLang('es')">Español</button>
-      <button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button>
+      <button class="lang-btn"        id="btn-en" onclick="setLang('en')">English</button>
     </div>
   </nav>
 
-  <!-- HERO -->
+  <!-- ═══════════════════ HERO ═══════════════════ -->
   <section id="hero">
-    <div class="hero-inner">
-      <div class="hero-label handwritten" data-es="Ciudad de México" data-en="Mexico City">Ciudad de México</div>
+    <div class="hero-text">
+      <p class="hero-city handwritten" data-es="Ciudad de México" data-en="Mexico City">Ciudad de México</p>
       <h1 class="hero-title">
-        <span class="title-coffee" data-es="Café" data-en="Coffee">Café</span>
-        <span class="title-amp">&amp;</span>
-        <span class="title-art" data-es="Arte" data-en="Art">Arte</span>
+        <span class="ht-cafe"  data-es="Café"  data-en="Coffee">Café</span>
+        <span class="ht-amp">&amp;</span>
+        <span class="ht-arte"  data-es="Arte"  data-en="Art">Arte</span>
       </h1>
-      <p class="hero-sub" data-es="Donde cada sorbo inspira y cada pared cuenta una historia." data-en="Where every sip inspires and every wall tells a story.">Donde cada sorbo inspira y cada pared cuenta una historia.</p>
+      <p class="hero-sub body-text"
+         data-es="Donde cada sorbo inspira y cada pared cuenta una historia — desde la Colonia Roma, CDMX."
+         data-en="Where every sip inspires and every wall tells a story — from Colonia Roma, CDMX.">
+        Donde cada sorbo inspira y cada pared cuenta una historia — desde la Colonia Roma, CDMX.
+      </p>
       <div class="hero-ctas">
-        <a href="#cafe" class="pill-btn" data-es="Ver el menú" data-en="See the menu">Ver el menú</a>
-        <a href="#arte" class="pill-btn pill-outline" data-es="Ver la galería" data-en="See the gallery">Ver la galería</a>
+        <a href="#cafe"  class="pill-btn magnetic" data-es="Ver el menú"    data-en="See the menu">Ver el menú</a>
+        <a href="#arte"  class="pill-btn pill-ghost magnetic" data-es="Ver la galería" data-en="See the gallery">Ver la galería</a>
       </div>
     </div>
 
-    <div class="hero-collage">
-      <div class="polaroid p1">
-        <div class="polaroid-img" style="background-image:url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&q=80')"></div>
+    <div class="hero-collage" id="heroCollage">
+      <div class="polaroid p1" data-base-rotate="-3">
+        <div class="pol-img" style="background-image:url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&q=80')"></div>
         <p class="handwritten" data-es="espresso perfecto" data-en="perfect espresso">espresso perfecto</p>
       </div>
-      <div class="polaroid p2">
-        <div class="polaroid-img" style="background-image:url('https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=600&q=80')"></div>
+      <div class="polaroid p2 paint-bg-2" data-base-rotate="2.5">
+        <div class="pol-img paint-bg-2"></div>
         <p class="handwritten" data-es="arte local" data-en="local art">arte local</p>
       </div>
-      <div class="polaroid p3">
-        <div class="polaroid-img" style="background-image:url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&q=80')"></div>
+      <div class="polaroid p3" data-base-rotate="-1.5">
+        <div class="pol-img" style="background-image:url('https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=600&q=80')"></div>
         <p class="handwritten" data-es="el ritual" data-en="the ritual">el ritual</p>
       </div>
-      <div class="sticker-badge" data-es="Colonia Roma · CDMX" data-en="Colonia Roma · CDMX">Colonia Roma · CDMX</div>
+      <div class="hero-sticker magnetic" data-es="Roma Norte · CDMX" data-en="Roma Norte · CDMX">Roma Norte · CDMX</div>
     </div>
   </section>
 
-  <!-- MARQUEE -->
-  <div class="marquee-bar">
+  <!-- ═══════════════════ MARQUEE ═══════════════════ -->
+  <div class="marquee-wrap" id="mq1">
     <div class="marquee-track">
-      <span data-es="Café de especialidad" data-en="Specialty Coffee">Café de especialidad</span>
-      <span class="bull">✦</span>
-      <span data-es="Arte emergente" data-en="Emerging Art">Arte emergente</span>
-      <span class="bull">✦</span>
-      <span data-es="Orgánico" data-en="Organic">Orgánico</span>
-      <span class="bull">✦</span>
-      <span data-es="Galería viva" data-en="Living Gallery">Galería viva</span>
-      <span class="bull">✦</span>
-      <span data-es="Hecho en México" data-en="Made in Mexico">Hecho en México</span>
-      <span class="bull">✦</span>
-      <span data-es="Pequeños lotes" data-en="Small Batch">Pequeños lotes</span>
-      <span class="bull">✦</span>
-      <span data-es="Café de especialidad" data-en="Specialty Coffee">Café de especialidad</span>
-      <span class="bull">✦</span>
-      <span data-es="Arte emergente" data-en="Emerging Art">Arte emergente</span>
-      <span class="bull">✦</span>
-      <span data-es="Orgánico" data-en="Organic">Orgánico</span>
-      <span class="bull">✦</span>
-      <span data-es="Galería viva" data-en="Living Gallery">Galería viva</span>
-      <span class="bull">✦</span>
-      <span data-es="Hecho en México" data-en="Made in Mexico">Hecho en México</span>
-      <span class="bull">✦</span>
-      <span data-es="Pequeños lotes" data-en="Small Batch">Pequeños lotes</span>
-      <span class="bull">✦</span>
+      <span data-es="Café de especialidad" data-en="Specialty Coffee">Café de especialidad</span><span class="bull">✦</span>
+      <span data-es="Arte emergente"        data-en="Emerging Art">Arte emergente</span><span class="bull">✦</span>
+      <span data-es="Orgánico"              data-en="Organic">Orgánico</span><span class="bull">✦</span>
+      <span data-es="Galería viva"          data-en="Living Gallery">Galería viva</span><span class="bull">✦</span>
+      <span data-es="Hecho en México"       data-en="Made in Mexico">Hecho en México</span><span class="bull">✦</span>
+      <span data-es="Pequeños lotes"        data-en="Small Batch">Pequeños lotes</span><span class="bull">✦</span>
+      <span data-es="Café de especialidad" data-en="Specialty Coffee">Café de especialidad</span><span class="bull">✦</span>
+      <span data-es="Arte emergente"        data-en="Emerging Art">Arte emergente</span><span class="bull">✦</span>
+      <span data-es="Orgánico"              data-en="Organic">Orgánico</span><span class="bull">✦</span>
+      <span data-es="Galería viva"          data-en="Living Gallery">Galería viva</span><span class="bull">✦</span>
+      <span data-es="Hecho en México"       data-en="Made in Mexico">Hecho en México</span><span class="bull">✦</span>
+      <span data-es="Pequeños lotes"        data-en="Small Batch">Pequeños lotes</span><span class="bull">✦</span>
     </div>
   </div>
 
-  <!-- ABOUT -->
+  <!-- ═══════════════════ ABOUT ═══════════════════ -->
   <section id="nosotros" class="about-section">
-    <div class="about-scrapbook">
-      <div class="tape tape-h tape-c1"></div>
-      <div class="polaroid about-pol-1">
-        <div class="polaroid-img" style="background-image:url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=700&q=80')"></div>
+    <div class="about-collage">
+      <div class="polaroid ab-p1" data-base-rotate="-2">
+        <div class="pol-img" style="background-image:url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=700&q=80')"></div>
         <p class="handwritten" data-es="tostado en casa" data-en="roasted in-house">tostado en casa</p>
       </div>
-      <div class="tape tape-v tape-c2"></div>
-      <div class="polaroid about-pol-2">
-        <div class="polaroid-img" style="background-image:url('https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=700&q=80')"></div>
+      <div class="polaroid ab-p2 paint-bg-5" data-base-rotate="3">
+        <div class="pol-img paint-bg-5"></div>
         <p class="handwritten" data-es="paredes que hablan" data-en="walls that speak">paredes que hablan</p>
       </div>
+      <div class="about-tape-h"></div>
+      <div class="about-tape-v"></div>
     </div>
 
-    <div class="about-text">
-      <span class="section-tag" data-es="Nuestra historia" data-en="Our story">Nuestra historia</span>
-      <h2 data-es="Un lugar donde el café <em>alimenta</em> y el arte <em>despierta.</em>" data-en="A place where coffee <em>feeds</em> and art <em>awakens.</em>">Un lugar donde el café <em>alimenta</em> y el arte <em>despierta.</em></h2>
-      <p class="body-text" data-es="Bruma nació en la Colonia Roma como encuentro entre dos mundos: el café de especialidad mexicano y la escena artística emergente de la CDMX. Aquí sirves un V60 junto a una exposición de pintura, y te vas con el alma llena." data-en="Bruma was born in Colonia Roma as a meeting of two worlds: Mexican specialty coffee and the emerging art scene of CDMX. Here you enjoy a V60 next to a painting exhibition, and you leave with your soul full.">
-        Bruma nació en la Colonia Roma como encuentro entre dos mundos: el café de especialidad mexicano y la escena artística emergente de la CDMX. Aquí sirves un V60 junto a una exposición de pintura, y te vas con el alma llena.
+    <div class="about-text js-reveal">
+      <span class="section-tag" data-es="01 — Nuestra historia" data-en="01 — Our story">01 — Nuestra historia</span>
+      <h2 class="paint-reveal" data-es="Un lugar donde el café <em>alimenta</em> y el arte <em>despierta.</em>" data-en="A place where coffee <em>feeds</em> and art <em>awakens.</em>">Un lugar donde el café <em>alimenta</em> y el arte <em>despierta.</em></h2>
+      <p class="body-text"
+         data-es="Bruma nació en la Colonia Roma como encuentro entre dos mundos: el café de especialidad mexicano y la escena artística emergente de la CDMX. Aquí, un V60 y una exposición de pintura comparten el mismo aire."
+         data-en="Bruma was born in Colonia Roma as a meeting of two worlds: Mexican specialty coffee and CDMX's emerging art scene. Here, a V60 and a painting exhibition share the same air.">
+        Bruma nació en la Colonia Roma como encuentro entre dos mundos: el café de especialidad mexicano y la escena artística emergente de la CDMX. Aquí, un V60 y una exposición de pintura comparten el mismo aire.
       </p>
-      <div class="about-pills">
-        <span data-es="100% Orgánico" data-en="100% Organic">100% Orgánico</span>
-        <span data-es="18 Artistas" data-en="18 Artists">18 Artistas</span>
-        <span data-es="3 Regiones" data-en="3 Regions">3 Regiones</span>
-        <span data-es="1 Lugar" data-en="1 Place">1 Lugar</span>
+      <div class="stat-row">
+        <div class="stat-item">
+          <span class="stat-num" data-count="100">0</span><span class="stat-unit">%</span>
+          <p data-es="Orgánico" data-en="Organic">Orgánico</p>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num" data-count="18">0</span>
+          <p data-es="Artistas" data-en="Artists">Artistas</p>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num" data-count="3">0</span>
+          <p data-es="Regiones" data-en="Regions">Regiones</p>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num" data-count="0">0</span>
+          <p data-es="Intermediarios" data-en="Middlemen">Intermediarios</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- COFFEE SECTION -->
+  <!-- ═══════════════════ COFFEE ═══════════════════ -->
   <section id="cafe" class="coffee-section">
-    <div class="torn-top"></div>
-    <div class="section-header">
-      <span class="section-tag light" data-es="El Café" data-en="The Coffee">El Café</span>
-      <h2 data-es="De la montaña<br/><em>a tu taza.</em>" data-en="From the mountain<br/><em>to your cup.</em>">De la montaña<br /><em>a tu taza.</em></h2>
+    <div class="torn-edge top"></div>
+
+    <div class="coffee-header js-reveal">
+      <span class="section-tag light" data-es="02 — El Café" data-en="02 — The Coffee">02 — El Café</span>
+      <h2 class="paint-reveal" data-es="De la montaña<br/><em>a tu taza.</em>" data-en="From the mountain<br/><em>to your cup.</em>">De la montaña<br/><em>a tu taza.</em></h2>
     </div>
 
     <div class="origins-row">
-      <div class="origin-card">
-        <div class="origin-img" style="background-image:url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=700&q=80')"></div>
-        <div class="tape tape-h"></div>
+      <div class="origin-card js-reveal" style="--d:0s">
+        <div class="origin-img" style="background-image:url('https://images.unsplash.com/photo-1501854140801-50d01698950b?w=700&q=80')"></div>
+        <div class="tape-strip origin-tape"></div>
         <h3>Chiapas</h3>
         <p class="handwritten origin-note" data-es="chocolate · canela · frutos rojos" data-en="chocolate · cinnamon · red fruits">chocolate · canela · frutos rojos</p>
+        <div class="origin-tags">
+          <span data-es="Lavado" data-en="Washed">Lavado</span>
+          <span>1400m</span>
+        </div>
       </div>
-      <div class="origin-card">
+      <div class="origin-card js-reveal" style="--d:.1s">
         <div class="origin-img" style="background-image:url('https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=700&q=80')"></div>
-        <div class="tape tape-h"></div>
+        <div class="tape-strip origin-tape"></div>
         <h3>Oaxaca</h3>
         <p class="handwritten origin-note" data-es="floral · cítrico · jazmín" data-en="floral · citrus · jasmine">floral · cítrico · jazmín</p>
+        <div class="origin-tags">
+          <span data-es="Natural" data-en="Natural">Natural</span>
+          <span>1600m</span>
+        </div>
       </div>
-      <div class="origin-card">
-        <div class="origin-img" style="background-image:url('https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?w=700&q=80')"></div>
-        <div class="tape tape-h"></div>
+      <div class="origin-card js-reveal" style="--d:.2s">
+        <div class="origin-img" style="background-image:url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=700&q=80')"></div>
+        <div class="tape-strip origin-tape"></div>
         <h3>Veracruz</h3>
         <p class="handwritten origin-note" data-es="caramelo · nuez · cremoso" data-en="caramel · nutty · creamy">caramelo · nuez · cremoso</p>
+        <div class="origin-tags">
+          <span>Honey</span>
+          <span>1200m</span>
+        </div>
       </div>
     </div>
 
-    <div class="menu-board">
-      <div class="menu-board-header">
-        <span class="handwritten menu-title" data-es="Lo que servimos" data-en="What we serve">Lo que servimos</span>
-      </div>
+    <div class="menu-board js-reveal">
+      <p class="menu-board-title handwritten" data-es="Lo que servimos" data-en="What we serve">Lo que servimos</p>
       <div class="menu-grid">
         <div class="menu-col">
           <h4 data-es="Espresso" data-en="Espresso">Espresso</h4>
-          <div class="menu-item"><span data-es="Espresso" data-en="Espresso">Espresso</span><span class="dots"></span><span>$65</span></div>
-          <div class="menu-item"><span data-es="Cortado" data-en="Cortado">Cortado</span><span class="dots"></span><span>$75</span></div>
+          <div class="menu-item"><span data-es="Espresso"   data-en="Espresso">Espresso</span>  <span class="dots"></span><span>$65</span></div>
+          <div class="menu-item"><span data-es="Cortado"    data-en="Cortado">Cortado</span>    <span class="dots"></span><span>$75</span></div>
           <div class="menu-item"><span data-es="Flat White" data-en="Flat White">Flat White</span><span class="dots"></span><span>$85</span></div>
           <div class="menu-item"><span data-es="Café de Olla" data-en="Café de Olla">Café de Olla</span><span class="dots"></span><span>$70</span></div>
-          <div class="menu-item"><span data-es="Brumoso" data-en="Brumoso">Brumoso</span><span class="dots"></span><span>$95</span></div>
+          <div class="menu-item"><span data-es="Brumoso"    data-en="Brumoso">Brumoso</span>    <span class="dots"></span><span>$95</span></div>
         </div>
         <div class="menu-col">
           <h4 data-es="Métodos" data-en="Brew Methods">Métodos</h4>
-          <div class="menu-item"><span>V60</span><span class="dots"></span><span>$90</span></div>
-          <div class="menu-item"><span>Chemex</span><span class="dots"></span><span>$95</span></div>
-          <div class="menu-item"><span>Aeropress</span><span class="dots"></span><span>$85</span></div>
+          <div class="menu-item"><span>V60</span>       <span class="dots"></span><span>$90</span></div>
+          <div class="menu-item"><span>Chemex</span>    <span class="dots"></span><span>$95</span></div>
+          <div class="menu-item"><span>Aeropress</span> <span class="dots"></span><span>$85</span></div>
           <div class="menu-item"><span data-es="Cold Brew" data-en="Cold Brew">Cold Brew</span><span class="dots"></span><span>$80</span></div>
-          <div class="menu-item"><span>Nitro</span><span class="dots"></span><span>$95</span></div>
+          <div class="menu-item"><span>Nitro</span>     <span class="dots"></span><span>$95</span></div>
         </div>
         <div class="menu-col">
-          <h4 data-es="Bebidas de autor" data-en="Signature drinks">Bebidas de autor</h4>
-          <div class="menu-item"><span data-es="Cardamomo Frío" data-en="Cold Cardamom">Cardamomo Frío</span><span class="dots"></span><span>$85</span></div>
-          <div class="menu-item"><span data-es="Tónica de tamarindo" data-en="Tamarind Tonic">Tónica de tamarindo</span><span class="dots"></span><span>$90</span></div>
-          <div class="menu-item"><span data-es="Matcha Roma" data-en="Roma Matcha">Matcha Roma</span><span class="dots"></span><span>$95</span></div>
-          <div class="menu-item"><span data-es="Cacao puro" data-en="Pure Cacao">Cacao puro</span><span class="dots"></span><span>$80</span></div>
-          <div class="menu-item"><span data-es="Miel de agave" data-en="Agave Honey">Miel de agave</span><span class="dots"></span><span>$85</span></div>
+          <h4 data-es="Autor" data-en="Signature">Autor</h4>
+          <div class="menu-item"><span data-es="Cardamomo Frío"   data-en="Cold Cardamom">Cardamomo Frío</span>  <span class="dots"></span><span>$85</span></div>
+          <div class="menu-item"><span data-es="Tónica Tamarindo" data-en="Tamarind Tonic">Tónica Tamarindo</span><span class="dots"></span><span>$90</span></div>
+          <div class="menu-item"><span data-es="Matcha Roma"      data-en="Roma Matcha">Matcha Roma</span>      <span class="dots"></span><span>$95</span></div>
+          <div class="menu-item"><span data-es="Cacao Puro"       data-en="Pure Cacao">Cacao Puro</span>       <span class="dots"></span><span>$80</span></div>
+          <div class="menu-item"><span data-es="Miel de Agave"    data-en="Agave Honey">Miel de Agave</span>   <span class="dots"></span><span>$85</span></div>
         </div>
       </div>
     </div>
-    <div class="torn-bottom"></div>
+
+    <div class="torn-edge bottom"></div>
   </section>
 
-  <!-- ART SECTION -->
+  <!-- ═══════════════════ REVERSE MARQUEE ═══════════════════ -->
+  <div class="marquee-wrap marquee-reverse" id="mq2">
+    <div class="marquee-track">
+      <span data-es="Pintura · Fotografía · Cerámica · Escultura · Instalación · Grabado · Pintura · Fotografía · Cerámica · Escultura · Instalación · Grabado ·"
+            data-en="Painting · Photography · Ceramics · Sculpture · Installation · Printmaking · Painting · Photography · Ceramics · Sculpture · Installation · Printmaking ·">
+        Pintura · Fotografía · Cerámica · Escultura · Instalación · Grabado · Pintura · Fotografía · Cerámica · Escultura · Instalación · Grabado ·
+      </span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ ART / GALLERY ═══════════════════ -->
   <section id="arte" class="art-section">
-    <div class="art-header">
-      <span class="section-tag" data-es="La Galería" data-en="The Gallery">La Galería</span>
-      <h2 data-es="Nuestras paredes<br/><em>son el lienzo.</em>" data-en="Our walls<br/><em>are the canvas.</em>">Nuestras paredes<br /><em>son el lienzo.</em></h2>
-      <p class="body-text" data-es="Cada dos meses presentamos una nueva exposición de artistas locales. Toda obra está a la venta." data-en="Every two months we present a new exhibition by local artists. All works are for sale.">
-        Cada dos meses presentamos una nueva exposición de artistas locales. Toda obra está a la venta.
+    <div class="art-intro js-reveal">
+      <span class="section-tag" data-es="03 — La Galería" data-en="03 — The Gallery">03 — La Galería</span>
+      <h2 class="paint-reveal" data-es="Nuestras paredes<br/><em>son el lienzo.</em>" data-en="Our walls<br/><em>are the canvas.</em>">Nuestras paredes<br/><em>son el lienzo.</em></h2>
+      <p class="body-text"
+         data-es="Cada dos meses presentamos una nueva exposición de artistas de la CDMX. Toda obra está a la venta."
+         data-en="Every two months we present a new exhibition by CDMX artists. All works are for sale.">
+        Cada dos meses presentamos una nueva exposición de artistas de la CDMX. Toda obra está a la venta.
       </p>
     </div>
 
-    <div class="art-collage">
-      <div class="art-polaroid ap1">
-        <div class="polaroid-img" style="background-image:url('https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?w=700&q=80')"></div>
+    <!-- Gallery wall — CSS-generated paintings (no broken images) -->
+    <div class="gallery-wall">
+      <div class="gallery-col gallery-col-1">
+        <div class="artwork js-reveal" style="--d:0s">
+          <div class="canvas-frame paint-bg-1"></div>
+          <div class="museum-label">
+            <p class="ml-artist">Gabriela Moreno</p>
+            <p class="ml-title handwritten" data-es="Sin título I" data-en="Untitled I">Sin título I</p>
+            <p class="ml-info" data-es="Óleo · 2024" data-en="Oil · 2024">Óleo · 2024</p>
+          </div>
+        </div>
+        <div class="artwork artwork-sm js-reveal" style="--d:.15s">
+          <div class="canvas-frame paint-bg-4"></div>
+          <div class="museum-label">
+            <p class="ml-artist">Ana Castillo</p>
+            <p class="ml-title handwritten" data-es="Forma del agua" data-en="Water Form">Forma del agua</p>
+            <p class="ml-info" data-es="Acuarela · 2024" data-en="Watercolor · 2024">Acuarela · 2024</p>
+          </div>
+        </div>
       </div>
-      <div class="art-polaroid ap2">
-        <div class="polaroid-img" style="background-image:url('https://images.unsplash.com/photo-1549887534-1541e9326642?w=600&q=80')"></div>
+
+      <div class="gallery-col gallery-col-2">
+        <div class="artwork artwork-sm js-reveal" style="--d:.08s">
+          <div class="canvas-frame paint-bg-3"></div>
+          <div class="museum-label">
+            <p class="ml-artist">Tomás Ríos</p>
+            <p class="ml-title handwritten" data-es="Ciudad difusa" data-en="Blurred City">Ciudad difusa</p>
+            <p class="ml-info" data-es="Mixta · 2024" data-en="Mixed media · 2024">Mixta · 2024</p>
+          </div>
+        </div>
+        <div class="artwork js-reveal" style="--d:.2s">
+          <div class="canvas-frame paint-bg-6"></div>
+          <div class="museum-label">
+            <p class="ml-artist">Luciana Torres</p>
+            <p class="ml-title handwritten" data-es="Raíces" data-en="Roots">Raíces</p>
+            <p class="ml-info" data-es="Acrílico · 2025" data-en="Acrylic · 2025">Acrílico · 2025</p>
+          </div>
+        </div>
       </div>
-      <div class="art-polaroid ap3">
-        <div class="polaroid-img" style="background-image:url('https://images.unsplash.com/photo-1547891654-e66ed7ebb968?w=600&q=80')"></div>
-      </div>
-      <div class="art-polaroid ap4">
-        <div class="polaroid-img" style="background-image:url('https://images.unsplash.com/photo-1571115764595-644a1f56a55c?w=600&q=80')"></div>
+
+      <div class="gallery-col gallery-col-3">
+        <div class="artwork js-reveal" style="--d:.12s">
+          <div class="canvas-frame paint-bg-5"></div>
+          <div class="museum-label">
+            <p class="ml-artist">Diego Vargas</p>
+            <p class="ml-title handwritten" data-es="Noche de lluvia" data-en="Rainy Night">Noche de lluvia</p>
+            <p class="ml-info" data-es="Óleo · 2025" data-en="Oil · 2025">Óleo · 2025</p>
+          </div>
+        </div>
+        <div class="artwork artwork-sm js-reveal" style="--d:.25s">
+          <div class="canvas-frame paint-bg-2"></div>
+          <div class="museum-label">
+            <p class="ml-artist">Valentina Cruz</p>
+            <p class="ml-title handwritten" data-es="Mercado I" data-en="Market I">Mercado I</p>
+            <p class="ml-info" data-es="Grabado · 2024" data-en="Etching · 2024">Grabado · 2024</p>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- Current Exhibition -->
-    <div class="exhibition-block">
-      <div class="ex-tape-label handwritten" data-es="exposición actual" data-en="current exhibition">exposición actual</div>
-      <div class="exhibition-cards">
-        <div class="ex-card">
-          <div class="ex-img" style="background-image:url('https://images.unsplash.com/photo-1493106641515-6b5631de4bb9?w=600&q=80')"></div>
-          <div class="tape tape-h"></div>
-          <h3>Gabriela Moreno</h3>
-          <p class="ex-series handwritten" data-es="«Raíces de noche»" data-en="«Night Roots»">«Raíces de noche»</p>
-          <p class="body-text" data-es="Óleo sobre tela · 8 piezas" data-en="Oil on canvas · 8 pieces">Óleo sobre tela · 8 piezas</p>
-        </div>
-        <div class="ex-card">
-          <div class="ex-img" style="background-image:url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=600&q=80')"></div>
-          <div class="tape tape-h"></div>
-          <h3>Tomás Ríos</h3>
-          <p class="ex-series handwritten" data-es="«Ciudad difusa»" data-en="«Blurred City»">«Ciudad difusa»</p>
-          <p class="body-text" data-es="Fotografía análoga · Serie" data-en="Analog photography · Series">Fotografía análoga · Serie</p>
-        </div>
-        <div class="ex-card">
-          <div class="ex-img" style="background-image:url('https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=600&q=80')"></div>
-          <div class="tape tape-h"></div>
-          <h3>Ana Castillo</h3>
-          <p class="ex-series handwritten" data-es="«Formas del agua»" data-en="«Water Forms»">«Formas del agua»</p>
-          <p class="body-text" data-es="Cerámica · Instalación" data-en="Ceramics · Installation">Cerámica · Instalación</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Quote -->
-    <div class="art-quote">
-      <p class="handwritten quote-text" data-es="&ldquo;El café te despierta. El arte te transforma.&rdquo;" data-en="&ldquo;Coffee wakes you up. Art transforms you.&rdquo;">&ldquo;El café te despierta. El arte te transforma.&rdquo;</p>
+    <div class="art-quote js-reveal">
+      <p class="handwritten quote-big"
+         data-es="&ldquo;El café te despierta. El arte te transforma.&rdquo;"
+         data-en="&ldquo;Coffee wakes you up. Art transforms you.&rdquo;">
+        &ldquo;El café te despierta. El arte te transforma.&rdquo;
+      </p>
     </div>
   </section>
 
-  <!-- EVENTS -->
+  <!-- ═══════════════════ EVENTS ═══════════════════ -->
   <section class="events-section">
-    <div class="torn-top torn-dark"></div>
+    <div class="torn-edge top torn-light"></div>
     <div class="events-inner">
-      <span class="section-tag light" data-es="Talleres &amp; Eventos" data-en="Workshops &amp; Events">Talleres &amp; Eventos</span>
-      <h2 data-es="Aprende · Crea · Disfruta" data-en="Learn · Create · Enjoy">Aprende · Crea · Disfruta</h2>
+      <div class="events-header js-reveal">
+        <span class="section-tag light" data-es="04 — Talleres &amp; Eventos" data-en="04 — Workshops &amp; Events">04 — Talleres &amp; Eventos</span>
+        <h2 class="paint-reveal light-reveal" data-es="Aprende · Crea<br/><em>· Disfruta.</em>" data-en="Learn · Create<br/><em>· Enjoy.</em>">Aprende · Crea<br/><em>· Disfruta.</em></h2>
+      </div>
       <div class="events-grid">
-        <div class="event-card">
-          <div class="event-date handwritten">Sáb 19 Abr</div>
+        <div class="event-card js-reveal" style="--d:0s">
+          <div class="event-num handwritten">01</div>
+          <span class="event-date handwritten">Sáb 19 Abr</span>
           <h3 data-es="Taller de acuarela" data-en="Watercolor workshop">Taller de acuarela</h3>
-          <p class="body-text" data-es="Pinta con acuarelas mientras disfrutas un cortado. Para todos los niveles." data-en="Paint with watercolors while enjoying a cortado. All levels welcome.">Pinta con acuarelas mientras disfrutas un cortado. Para todos los niveles.</p>
-          <div class="event-tags">
-            <span data-es="Arte" data-en="Art">Arte</span>
+          <p class="body-text"
+             data-es="Pinta con acuarelas mientras disfrutas un cortado. Para todos los niveles."
+             data-en="Paint with watercolors while enjoying a cortado. All levels welcome.">
+            Pinta con acuarelas mientras disfrutas un cortado. Para todos los niveles.
+          </p>
+          <div class="event-meta">
+            <span class="tag-art" data-es="Arte" data-en="Art">Arte</span>
             <span>10:00–13:00</span>
             <span>$350 MXN</span>
           </div>
         </div>
-        <div class="event-card">
-          <div class="event-date handwritten">Dom 20 Abr</div>
+        <div class="event-card js-reveal" style="--d:.1s">
+          <div class="event-num handwritten">02</div>
+          <span class="event-date handwritten">Dom 20 Abr</span>
           <h3 data-es="Cata de café" data-en="Coffee cupping">Cata de café</h3>
-          <p class="body-text" data-es="Descubre los sabores de tres regiones de México guiado por nuestro barista." data-en="Discover the flavors of three Mexican regions guided by our barista.">Descubre los sabores de tres regiones de México guiado por nuestro barista.</p>
-          <div class="event-tags">
-            <span data-es="Café" data-en="Coffee">Café</span>
+          <p class="body-text"
+             data-es="Descubre los sabores de tres regiones mexicanas guiado por nuestro barista."
+             data-en="Discover the flavors of three Mexican regions guided by our barista.">
+            Descubre los sabores de tres regiones mexicanas guiado por nuestro barista.
+          </p>
+          <div class="event-meta">
+            <span class="tag-coffee" data-es="Café" data-en="Coffee">Café</span>
             <span>11:00–13:00</span>
             <span>$280 MXN</span>
           </div>
         </div>
-        <div class="event-card">
-          <div class="event-date handwritten">Vie 25 Abr</div>
+        <div class="event-card js-reveal" style="--d:.2s">
+          <div class="event-num handwritten">03</div>
+          <span class="event-date handwritten">Vie 25 Abr</span>
           <h3 data-es="Noche de galería" data-en="Gallery night">Noche de galería</h3>
-          <p class="body-text" data-es="Vernissage mensual con artistas presentes. Vinos, café y conversación." data-en="Monthly vernissage with artists present. Wine, coffee and conversation.">Vernissage mensual con artistas presentes. Vinos, café y conversación.</p>
-          <div class="event-tags">
-            <span data-es="Arte + Café" data-en="Art + Coffee">Arte + Café</span>
+          <p class="body-text"
+             data-es="Vernissage mensual con los artistas presentes. Vinos, café y conversación."
+             data-en="Monthly vernissage with artists present. Wine, coffee and conversation.">
+            Vernissage mensual con los artistas presentes. Vinos, café y conversación.
+          </p>
+          <div class="event-meta">
+            <span class="tag-both" data-es="Arte + Café" data-en="Art + Coffee">Arte + Café</span>
             <span>19:00–22:00</span>
             <span data-es="Entrada libre" data-en="Free entry">Entrada libre</span>
           </div>
         </div>
       </div>
     </div>
-    <div class="torn-bottom torn-dark-inv"></div>
+    <div class="torn-edge bottom torn-light-inv"></div>
   </section>
 
-  <!-- VISIT -->
+  <!-- ═══════════════════ VISIT ═══════════════════ -->
   <section id="visita" class="visit-section">
-    <div class="visit-img-col">
-      <div class="v-polaroid vp1">
-        <div class="polaroid-img" style="background-image:url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=900&q=80')"></div>
-        <p class="handwritten" data-es="te esperamos" data-en="we're waiting for you">te esperamos</p>
+    <div class="visit-imagery">
+      <div class="polaroid vp1" data-base-rotate="-2">
+        <div class="pol-img" style="background-image:url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=900&q=80')"></div>
+        <p class="handwritten" data-es="te esperamos" data-en="we're waiting">te esperamos</p>
       </div>
-      <div class="v-polaroid vp2">
-        <div class="polaroid-img" style="background-image:url('https://images.unsplash.com/photo-1541167760496-1628856ab772?w=600&q=80')"></div>
+      <div class="polaroid vp2" data-base-rotate="3">
+        <div class="pol-img" style="background-image:url('https://images.unsplash.com/photo-1541167760496-1628856ab772?w=600&q=80')"></div>
       </div>
     </div>
-    <div class="visit-info">
-      <span class="section-tag" data-es="Encuéntranos" data-en="Find us">Encuéntranos</span>
-      <h2 data-es="Entra.<br/><em>Quédate.</em>" data-en="Come in.<br/><em>Stay a while.</em>">Entra.<br /><em>Quédate.</em></h2>
-      <div class="visit-row">
-        <div class="visit-block">
-          <p class="visit-label handwritten" data-es="Horario" data-en="Hours">Horario</p>
+
+    <div class="visit-info js-reveal">
+      <span class="section-tag" data-es="05 — Encuéntranos" data-en="05 — Find us">05 — Encuéntranos</span>
+      <h2 class="paint-reveal" data-es="Entra.<br/><em>Quédate.</em>" data-en="Come in.<br/><em>Stay a while.</em>">Entra.<br/><em>Quédate.</em></h2>
+      <div class="visit-grid">
+        <div>
+          <p class="visit-lbl handwritten" data-es="Horario" data-en="Hours">Horario</p>
           <p data-es="Lun – Vie: 7am – 9pm" data-en="Mon – Fri: 7am – 9pm">Lun – Vie: 7am – 9pm</p>
           <p data-es="Sáb – Dom: 8am – 10pm" data-en="Sat – Sun: 8am – 10pm">Sáb – Dom: 8am – 10pm</p>
         </div>
-        <div class="visit-block">
-          <p class="visit-label handwritten" data-es="Dónde" data-en="Where">Dónde</p>
+        <div>
+          <p class="visit-lbl handwritten" data-es="Dónde" data-en="Where">Dónde</p>
           <p>Orizaba 42</p>
           <p data-es="Colonia Roma Norte, CDMX" data-en="Colonia Roma Norte, CDMX">Colonia Roma Norte, CDMX</p>
         </div>
-        <div class="visit-block">
-          <p class="visit-label handwritten" data-es="Contacto" data-en="Contact">Contacto</p>
+        <div>
+          <p class="visit-lbl handwritten" data-es="Contacto" data-en="Contact">Contacto</p>
           <p>hola@brumacafe.mx</p>
           <p>+52 55 4321 0987</p>
         </div>
       </div>
-      <a href="#visita" class="pill-btn pill-dark" data-es="Reservar una mesa" data-en="Reserve a table">Reservar una mesa</a>
+      <a href="#visita" class="pill-btn pill-dark magnetic" data-es="Reservar una mesa" data-en="Reserve a table">Reservar una mesa</a>
     </div>
   </section>
 
-  <!-- FOOTER CTA -->
+  <!-- ═══════════════════ CTA ═══════════════════ -->
   <div class="footer-cta">
-    <p class="handwritten cta-eyebrow" data-es="¿tienes algo en mente?" data-en="something in mind?">¿tienes algo en mente?</p>
-    <h2 data-es="Hagamos algo<br/><em>juntos.</em>" data-en="Let's create<br/><em>together.</em>">Hagamos algo<br /><em>juntos.</em></h2>
-    <div class="cta-row">
-      <a href="#" class="pill-btn" data-es="Exposiciones" data-en="Exhibitions">Exposiciones</a>
-      <a href="#" class="pill-btn pill-outline" data-es="Eventos privados" data-en="Private events">Eventos privados</a>
-      <a href="#" class="pill-btn pill-outline" data-es="Colaboraciones" data-en="Collaborations">Colaboraciones</a>
+    <p class="cta-hand handwritten" data-es="¿tienes algo en mente?" data-en="something in mind?">¿tienes algo en mente?</p>
+    <h2 class="js-reveal paint-reveal" data-es="Hagamos algo<br/><em>juntos.</em>" data-en="Let's create<br/><em>together.</em>">Hagamos algo<br/><em>juntos.</em></h2>
+    <div class="cta-btns js-reveal">
+      <a href="#" class="pill-btn magnetic"       data-es="Exposiciones"    data-en="Exhibitions">Exposiciones</a>
+      <a href="#" class="pill-btn pill-ghost magnetic" data-es="Eventos privados" data-en="Private events">Eventos privados</a>
+      <a href="#" class="pill-btn pill-ghost magnetic" data-es="Colaboraciones"   data-en="Collaborations">Colaboraciones</a>
     </div>
   </div>
 
-  <!-- FOOTER -->
+  <!-- ═══════════════════ FOOTER ═══════════════════ -->
   <footer class="footer">
     <div class="footer-top">
       <div class="footer-brand">
-        <p class="footer-logo">BRUMA</p>
-        <p class="footer-sub handwritten" data-es="Café &amp; Arte · Roma Norte · CDMX" data-en="Coffee &amp; Art · Roma Norte · CDMX">Café &amp; Arte · Roma Norte · CDMX</p>
+        <p class="f-logo">BRUMA</p>
+        <p class="f-sub handwritten" data-es="Café &amp; Arte · Roma Norte · CDMX" data-en="Coffee &amp; Art · Roma Norte · CDMX">Café &amp; Arte · Roma Norte · CDMX</p>
       </div>
-      <div class="footer-links">
-        <div class="footer-col">
-          <p class="footer-heading" data-es="Explorar" data-en="Explore">Explorar</p>
+      <div class="footer-cols">
+        <div class="f-col">
+          <p class="f-head" data-es="Explorar" data-en="Explore">Explorar</p>
           <a href="#nosotros" data-es="Nosotros" data-en="About">Nosotros</a>
-          <a href="#cafe" data-es="Menú" data-en="Menu">Menú</a>
-          <a href="#arte" data-es="Galería" data-en="Gallery">Galería</a>
-          <a href="#visita" data-es="Visita" data-en="Visit">Visita</a>
+          <a href="#cafe"     data-es="Menú"     data-en="Menu">Menú</a>
+          <a href="#arte"     data-es="Galería"  data-en="Gallery">Galería</a>
+          <a href="#visita"   data-es="Visita"   data-en="Visit">Visita</a>
         </div>
-        <div class="footer-col">
-          <p class="footer-heading" data-es="Síguenos" data-en="Follow us">Síguenos</p>
+        <div class="f-col">
+          <p class="f-head" data-es="Síguenos" data-en="Follow">Síguenos</p>
           <a href="#">Instagram</a>
           <a href="#">TikTok</a>
           <a href="#">Pinterest</a>
         </div>
-        <div class="footer-col newsletter-col">
-          <p class="footer-heading" data-es="Newsletter" data-en="Newsletter">Newsletter</p>
-          <p class="footer-note" data-es="Exposiciones, recetas y eventos." data-en="Exhibitions, recipes and events.">Exposiciones, recetas y eventos.</p>
+        <div class="f-col">
+          <p class="f-head">Newsletter</p>
+          <p class="f-note" data-es="Exposiciones, recetas y eventos." data-en="Exhibitions, recipes and events.">Exposiciones, recetas y eventos.</p>
           <form class="nw-form" onsubmit="return false;">
-            <input type="email" placeholder="tu@email.com" data-es-placeholder="tu@email.com" data-en-placeholder="you@email.com" />
+            <input type="email"
+                   placeholder="tu@email.com"
+                   data-es-placeholder="tu@email.com"
+                   data-en-placeholder="you@email.com" />
             <button type="submit">→</button>
           </form>
         </div>
