@@ -310,8 +310,19 @@ body.cursor-click #c-dot  { transform: translate(-50%,-50%) scale(.7); }
   height: auto;
   max-height: 78vh;
   object-fit: contain;
-  filter: sepia(.08) contrast(1.04);
-  opacity: .92;
+  opacity: .95;
+  /* SVG filter removes the painting's black background; sepia/contrast
+     tune the remaining subject to feel at home on the cream hero.     */
+  filter: url(#black-to-transparent) sepia(.1) contrast(1.06) brightness(1.04);
+  /* Soft radial mask — fades any residual dark edges into the cream.
+     Serves as a graceful fallback if the SVG filter is blocked by
+     cross-origin restrictions on the Pinterest CDN image.            */
+  -webkit-mask-image: radial-gradient(
+    ellipse 72% 90% at 50% 48%,
+    #000 45%, #000 65%, transparent 100%);
+  mask-image: radial-gradient(
+    ellipse 72% 90% at 50% 48%,
+    #000 45%, #000 65%, transparent 100%);
 }
 
 /* ── The big overlapping words (z:3) — the composition's visual anchor ── */
