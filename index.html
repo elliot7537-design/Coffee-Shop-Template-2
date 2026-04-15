@@ -33,8 +33,60 @@
     </div>
   </nav>
 
-  <!-- ═══════════════════ HERO ═══════════════════ -->
+  <!-- ═══════════════════ HERO (mural) ═══════════════════ -->
   <section id="hero">
+    <!-- Painted wall backdrop -->
+    <div class="mural-bg" aria-hidden="true">
+      <div class="mural-paint mp-1"></div>
+      <div class="mural-paint mp-2"></div>
+      <div class="mural-paint mp-3"></div>
+      <svg class="mural-brush" viewBox="0 0 1200 400" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 40 230 C 260 80, 520 320, 780 190 S 1080 110, 1170 210"
+              stroke="#bf4a22" stroke-width="140" fill="none" opacity="0.22" stroke-linecap="round"/>
+        <path d="M 110 270 C 320 170, 560 340, 820 230 S 1030 180, 1120 270"
+              stroke="#c98a1e" stroke-width="72" fill="none" opacity="0.20" stroke-linecap="round"/>
+        <path d="M 90 320 C 290 260, 540 360, 760 300 S 990 270, 1100 320"
+              stroke="#546637" stroke-width="26" fill="none" opacity="0.28" stroke-linecap="round"/>
+      </svg>
+      <span class="splatter sp-1"></span>
+      <span class="splatter sp-2"></span>
+      <span class="splatter sp-3"></span>
+      <span class="splatter sp-4"></span>
+      <span class="splatter sp-5"></span>
+      <span class="drip dr-1"></span>
+      <span class="drip dr-2"></span>
+    </div>
+
+    <!-- Location sticker -->
+    <div class="hero-sticker magnetic" data-es="Roma Norte · CDMX" data-en="Roma Norte · CDMX">Roma Norte · CDMX</div>
+
+    <!-- Pinned polaroids scattered across the mural -->
+    <div class="hero-collage" id="heroCollage">
+      <div class="polaroid p1" data-base-rotate="-8">
+        <span class="tape-pin"></span>
+        <div class="pol-img" style="background-image:url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1400&q=85')"></div>
+        <p class="handwritten" data-es="espresso perfecto" data-en="perfect espresso">espresso perfecto</p>
+      </div>
+      <div class="polaroid p2" data-base-rotate="7">
+        <span class="tape-pin"></span>
+        <div class="pol-img paint-bg-2"></div>
+        <p class="handwritten" data-es="arte local" data-en="local art">arte local</p>
+      </div>
+      <div class="polaroid p3" data-base-rotate="-4">
+        <span class="tape-pin"></span>
+        <div class="pol-img" style="background-image:url('https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=1400&q=85')"></div>
+        <p class="handwritten" data-es="el ritual" data-en="the ritual">el ritual</p>
+      </div>
+    </div>
+
+    <!-- Hand-drawn scribble + arrow -->
+    <svg class="mural-arrow" viewBox="0 0 140 100" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+      <path d="M 12 82 Q 48 8, 122 26" stroke="#1a0f08" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path d="M 110 16 L 124 26 L 114 40" stroke="#1a0f08" stroke-width="2" fill="none" stroke-linecap="round"/>
+    </svg>
+    <p class="mural-scribble handwritten" data-es="desde 2018" data-en="since 2018">desde 2018</p>
+
+    <!-- Centerpiece text -->
     <div class="hero-text">
       <p class="hero-city handwritten" data-es="Ciudad de México" data-en="Mexico City">Ciudad de México</p>
       <h1 class="hero-title">
@@ -51,22 +103,6 @@
         <a href="#cafe"  class="pill-btn magnetic" data-es="Ver el menú"    data-en="See the menu">Ver el menú</a>
         <a href="#arte"  class="pill-btn pill-ghost magnetic" data-es="Ver la galería" data-en="See the gallery">Ver la galería</a>
       </div>
-    </div>
-
-    <div class="hero-collage" id="heroCollage">
-      <div class="polaroid p1" data-base-rotate="-3">
-        <div class="pol-img" style="background-image:url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&q=80')"></div>
-        <p class="handwritten" data-es="espresso perfecto" data-en="perfect espresso">espresso perfecto</p>
-      </div>
-      <div class="polaroid p2 paint-bg-2" data-base-rotate="2.5">
-        <div class="pol-img paint-bg-2"></div>
-        <p class="handwritten" data-es="arte local" data-en="local art">arte local</p>
-      </div>
-      <div class="polaroid p3" data-base-rotate="-1.5">
-        <div class="pol-img" style="background-image:url('https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=600&q=80')"></div>
-        <p class="handwritten" data-es="el ritual" data-en="the ritual">el ritual</p>
-      </div>
-      <div class="hero-sticker magnetic" data-es="Roma Norte · CDMX" data-en="Roma Norte · CDMX">Roma Norte · CDMX</div>
     </div>
   </section>
 
@@ -92,7 +128,7 @@
   <section id="nosotros" class="about-section">
     <div class="about-collage">
       <div class="polaroid ab-p1" data-base-rotate="-2">
-        <div class="pol-img" style="background-image:url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=700&q=80')"></div>
+        <div class="pol-img" style="background-image:url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=1200&q=85')"></div>
         <p class="handwritten" data-es="tostado en casa" data-en="roasted in-house">tostado en casa</p>
       </div>
       <div class="polaroid ab-p2 paint-bg-5" data-base-rotate="3">
@@ -143,7 +179,7 @@
 
     <div class="origins-row">
       <div class="origin-card js-reveal" style="--d:0s">
-        <div class="origin-img" style="background-image:url('https://images.unsplash.com/photo-1501854140801-50d01698950b?w=700&q=80')"></div>
+        <div class="origin-img" style="background-image:url('https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1200&q=85')"></div>
         <div class="tape-strip origin-tape"></div>
         <h3>Chiapas</h3>
         <p class="handwritten origin-note" data-es="chocolate · canela · frutos rojos" data-en="chocolate · cinnamon · red fruits">chocolate · canela · frutos rojos</p>
@@ -153,7 +189,7 @@
         </div>
       </div>
       <div class="origin-card js-reveal" style="--d:.1s">
-        <div class="origin-img" style="background-image:url('https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=700&q=80')"></div>
+        <div class="origin-img" style="background-image:url('https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=1200&q=85')"></div>
         <div class="tape-strip origin-tape"></div>
         <h3>Oaxaca</h3>
         <p class="handwritten origin-note" data-es="floral · cítrico · jazmín" data-en="floral · citrus · jasmine">floral · cítrico · jazmín</p>
@@ -163,7 +199,7 @@
         </div>
       </div>
       <div class="origin-card js-reveal" style="--d:.2s">
-        <div class="origin-img" style="background-image:url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=700&q=80')"></div>
+        <div class="origin-img" style="background-image:url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=1200&q=85')"></div>
         <div class="tape-strip origin-tape"></div>
         <h3>Veracruz</h3>
         <p class="handwritten origin-note" data-es="caramelo · nuez · cremoso" data-en="caramel · nutty · creamy">caramelo · nuez · cremoso</p>
@@ -361,11 +397,11 @@
   <section id="visita" class="visit-section">
     <div class="visit-imagery">
       <div class="polaroid vp1" data-base-rotate="-2">
-        <div class="pol-img" style="background-image:url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=900&q=80')"></div>
+        <div class="pol-img" style="background-image:url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1400&q=85')"></div>
         <p class="handwritten" data-es="te esperamos" data-en="we're waiting">te esperamos</p>
       </div>
       <div class="polaroid vp2" data-base-rotate="3">
-        <div class="pol-img" style="background-image:url('https://images.unsplash.com/photo-1541167760496-1628856ab772?w=600&q=80')"></div>
+        <div class="pol-img" style="background-image:url('https://images.unsplash.com/photo-1541167760496-1628856ab772?w=1200&q=85')"></div>
       </div>
     </div>
 
