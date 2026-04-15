@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700;1,9..144,900&family=Caveat:wght@400;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=7" />
+  <link rel="stylesheet" href="styles.css?v=8" />
 </head>
 <body>
 
@@ -37,20 +37,17 @@
   <!-- ═══════════════════ HERO — Gallery Composition ═══════════════════ -->
   <section id="hero">
 
-    <!-- Words BEHIND the portrait (z:3) -->
-    <!-- These get partially covered by the portrait photo, creating the layered art effect -->
+    <!-- Main artwork — centered background (z:1, behind all text) -->
+    <!-- Girl with a Pearl Earring (Vermeer, ~1665) — public domain via Wikimedia Commons -->
+    <div class="hero-main-art" aria-hidden="true">
+      <div class="hero-main-img"></div>
+    </div>
+
+    <!-- All big words sit ON TOP of the artwork (z:3+) -->
     <div class="hw hw-word-1" data-es="EL" data-en="THE" aria-hidden="true">EL</div>
     <h1 class="hw hw-word-2" data-es="CAFÉ" data-en="CAFÉ">CAFÉ</h1>
     <div class="hw hw-word-3" data-es="ES" data-en="IS" aria-hidden="true">ES</div>
-
-    <!-- Central portrait photo — the featured "artwork" (z:5) -->
-    <div class="hero-portrait" aria-hidden="true">
-      <div class="hero-portrait-img"></div>
-    </div>
-
-    <!-- Words IN FRONT / beside the portrait (z:7) -->
     <div class="hw hw-word-4" data-es="ARTE" data-en="ART" aria-hidden="true">ARTE</div>
-    <!-- Script accent floating between the big words -->
     <p class="hero-script handwritten" data-es="Siempre" data-en="Always" aria-hidden="true">Siempre</p>
 
     <!-- Small editorial details -->
@@ -58,7 +55,7 @@
     <p class="hero-script-brand handwritten" aria-hidden="true">Bruma</p>
     <span class="hero-label-right" data-es="MENÚ" data-en="MENU" aria-hidden="true">MENÚ</span>
 
-    <!-- Info block — upper right (like the reference description panel) -->
+    <!-- Info block — upper right -->
     <div class="hero-info">
       <p class="hero-info-desc body-text"
          data-es="Donde el arte y el café se encuentran — cada taza es una experiencia, cada pared una conversación."
@@ -71,8 +68,10 @@
       </p>
     </div>
 
-    <!-- CTA block — lower-left (styled like reference's dark "BUY TICKET" element) -->
+    <!-- CTA block — lower-left (matches reference's dark "BUY TICKET" card) -->
+    <!-- Coffee photo thumbnail inside the card mirrors the reference's small framed painting -->
     <div class="hero-cta-block">
+      <div class="hcta-img" aria-hidden="true"></div>
       <a href="#cafe" class="hcta-primary magnetic" data-es="Ver el menú" data-en="See the menu">Ver el menú</a>
       <a href="#arte" class="hcta-secondary magnetic" data-es="Ver la galería" data-en="See the gallery">Ver la galería</a>
     </div>
@@ -458,6 +457,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=7"></script>
+  <script src="script.js?v=8"></script>
 </body>
 </html>
