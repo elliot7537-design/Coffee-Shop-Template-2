@@ -214,6 +214,7 @@ body.cursor-click #c-dot  { transform: translate(-50%,-50%) scale(.7); }
 .pol-img {
   width: 100%; padding-top: 96%;
   background-size: cover; background-position: center;
+  background-color: var(--paper2);
   display: block;
 }
 .polaroid > p.handwritten {
@@ -389,26 +390,35 @@ body.cursor-click #c-dot  { transform: translate(-50%,-50%) scale(.7); }
   box-shadow: 0 2px 5px rgba(26,15,8,.12);
 }
 
-/* Hand-drawn arrow + scribble */
-.mural-arrow {
+/* Painter's signature — a single flourish in the bottom-left
+   corner, like an artist's mark on a finished canvas */
+.mural-sig {
   position: absolute;
-  width: 120px; height: 80px;
-  top: 46%; left: 13%;
+  bottom: 5.5%;
+  left: 4.5%;
+  width: 200px;
   z-index: 5;
   pointer-events: none;
-  transform: rotate(-4deg);
-  opacity: .55;
+  transform: rotate(-3deg);
+  opacity: .85;
 }
-.mural-scribble {
-  position: absolute;
-  top: 56%; left: 10%;
-  z-index: 5;
-  font-size: 1.15rem;
-  color: var(--ink);
-  transform: rotate(-6deg);
-  max-width: 140px;
-  line-height: 1.2;
-  opacity: .75;
+.sig-stroke {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 1px 0 rgba(26,15,8,.08));
+}
+.sig-year {
+  display: block;
+  text-align: right;
+  font-size: .85rem;
+  letter-spacing: .22em;
+  color: color-mix(in srgb, var(--ink) 55%, transparent);
+  margin-top: -.35rem;
+  padding-right: .4rem;
+  font-family: var(--font-b);
+  font-weight: 500;
+  text-transform: uppercase;
 }
 
 /* Centerpiece text (painted lettering) */
@@ -605,12 +615,17 @@ body.cursor-click #c-dot  { transform: translate(-50%,-50%) scale(.7); }
 .artwork { position: relative; }
 .canvas-frame {
   width: 100%; padding-top: 115%;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--paper2);
   box-shadow: 0 4px 30px rgba(26,15,8,.22), inset 0 0 0 6px rgba(26,15,8,.1);
   border: 3px solid rgba(26,15,8,.09);
   cursor: pointer;
   overflow: hidden;
-  transition: transform .5s var(--spring), box-shadow .5s ease;
+  transition: transform .5s var(--spring), box-shadow .5s ease, filter .5s ease;
+  filter: saturate(.95);
 }
+.artwork:hover .canvas-frame { filter: saturate(1.1); }
 .artwork:hover .canvas-frame {
   transform: scale(1.03);
   box-shadow: 0 12px 48px rgba(26,15,8,.3), inset 0 0 0 6px rgba(26,15,8,.1);
@@ -722,7 +737,7 @@ body.cursor-click #c-dot  { transform: translate(-50%,-50%) scale(.7); }
   .hero-collage .p1 { width: 160px; top: 10%; left: 2%; }
   .hero-collage .p2 { width: 150px; top: 12%; right: 2%; }
   .hero-collage .p3 { display: none; }
-  .mural-arrow, .mural-scribble { display: none; }
+  .mural-sig { width: 150px; bottom: 3%; left: 3%; }
   .about-section, .visit-section { grid-template-columns: 1fr; }
   .about-collage, .visit-imagery { min-height: 380px; }
   .gallery-wall { grid-template-columns: 1fr 1fr; }
@@ -732,6 +747,7 @@ body.cursor-click #c-dot  { transform: translate(-50%,-50%) scale(.7); }
 @media (max-width: 768px) {
   .nav-links { display: none; }
   .hero-collage { display: none; }
+  .mural-sig { display: none; }
   .hero-sticker { top: calc(var(--nav-h) + .8rem); font-size: 1rem; padding: .4rem .9rem; }
   .hero-title { gap: .6rem; }
   .origins-row, .menu-grid, .events-grid, .gallery-wall { grid-template-columns: 1fr; }
