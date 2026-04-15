@@ -230,19 +230,24 @@ body.cursor-click #c-dot  { transform: translate(-50%,-50%) scale(.7); }
   left: 50%; transform: translateX(-50%);
 }
 .origin-tape { top: -10px; background: rgba(220,185,70,.58); }
-.about-tape-h {
-  position: absolute; z-index: 3; pointer-events: none;
-  height: 20px; width: 60px;
-  background: rgba(220,185,70,.55);
-  top: 12%; left: 38%;
-  transform: rotate(-2deg);
+/* Tape strip pinning a polaroid to the page — sits at the top edge,
+   centered horizontally, like a piece of masking tape would.        */
+.tape-pin {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  width: 68px;
+  height: 20px;
+  background: rgba(220,185,70,.62);
+  transform: translateX(-50%) rotate(-3deg);
+  z-index: 5;
+  box-shadow: 0 2px 5px rgba(26,15,8,.12);
+  pointer-events: none;
 }
-.about-tape-v {
-  position: absolute; z-index: 3; pointer-events: none;
-  width: 20px; height: 65px;
-  background: rgba(140,175,100,.5);
-  bottom: 22%; right: 8%;
-  transform: rotate(3deg);
+/* Alternate green tape on the second about polaroid */
+.ab-p2 .tape-pin {
+  background: rgba(140,175,100,.55);
+  transform: translateX(-50%) rotate(2deg);
 }
 
 /* ═══════════════════════════════════════════════
@@ -682,17 +687,50 @@ body.cursor-click #c-dot  { transform: translate(-50%,-50%) scale(.7); }
   font-size: 1rem;
 }
 
-/* Row of 5 cards */
+/* Handwritten swipe hint under the heading */
+.drinks-scroll-hint {
+  font-size: 1.05rem;
+  color: var(--rust);
+  margin-top: 1.1rem;
+  opacity: .72;
+}
+
+/* Horizontal sliding carousel — scroll-snap for clean snapping
+   on swipe, scrollbar styled subtly.                           */
 .drinks-row {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1.1rem;
-  max-width: 1500px;
-  margin: 0 auto;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1.2rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scroll-padding-left: 6%;
+  padding: 1rem 6% 2rem;
+  margin: 0 -6%;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(26,15,8,.28) transparent;
+}
+.drinks-row::-webkit-scrollbar {
+  height: 6px;
+}
+.drinks-row::-webkit-scrollbar-track {
+  background: rgba(26,15,8,.04);
+  border-radius: 3px;
+}
+.drinks-row::-webkit-scrollbar-thumb {
+  background: rgba(26,15,8,.22);
+  border-radius: 3px;
+}
+.drinks-row::-webkit-scrollbar-thumb:hover {
+  background: var(--rust);
 }
 
 .drink-card {
   position: relative;
+  flex: 0 0 clamp(220px, 22vw, 290px);
+  scroll-snap-align: start;
   background: var(--cream);
   padding: 1rem 1rem 1.6rem;
   display: flex;
@@ -769,12 +807,10 @@ body.cursor-click #c-dot  { transform: translate(-50%,-50%) scale(.7); }
   border-top: 1px dashed rgba(26,15,8,.12);
 }
 
-@media (max-width: 1200px) {
-  .drinks-row { grid-template-columns: repeat(3, 1fr); }
-}
 @media (max-width: 720px) {
   .drinks-section { padding: 4rem 5%; }
-  .drinks-row { grid-template-columns: repeat(2, 1fr); gap: .8rem; }
+  .drinks-row { padding: 1rem 5% 1.5rem; margin: 0 -5%; gap: .9rem; }
+  .drink-card { flex-basis: clamp(200px, 72vw, 260px); }
   .drink-desc { min-height: auto; margin-bottom: .8rem; }
   .drinks-header { margin-bottom: 2.5rem; }
 }

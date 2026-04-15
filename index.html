@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700;1,9..144,900&family=Caveat:wght@400;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=14" />
+  <link rel="stylesheet" href="styles.css?v=15" />
 </head>
 <body>
 
@@ -128,15 +128,15 @@
   <section id="nosotros" class="about-section">
     <div class="about-collage">
       <div class="polaroid ab-p1" data-base-rotate="-2">
+        <span class="tape-pin"></span>
         <div class="pol-img" style="background-image:url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=1200&q=85')"></div>
         <p class="handwritten" data-es="tostado en casa" data-en="roasted in-house">tostado en casa</p>
       </div>
       <div class="polaroid ab-p2" data-base-rotate="3">
+        <span class="tape-pin"></span>
         <div class="pol-img" style="background-image:url('https://images.unsplash.com/photo-1541167760496-1628856ab772?w=1200&q=85')"></div>
         <p class="handwritten" data-es="paredes que hablan" data-en="walls that speak">paredes que hablan</p>
       </div>
-      <div class="about-tape-h"></div>
-      <div class="about-tape-v"></div>
     </div>
 
     <div class="about-text js-reveal">
@@ -251,13 +251,16 @@
           data-es="Bebidas que son <em>arte.</em>"
           data-en="Drinks that are <em>art.</em>">Bebidas que son <em>arte.</em></h2>
       <p class="drinks-subtitle body-text"
-         data-es="Cinco favoritos que resumen lo que somos — tradición mexicana, técnica moderna, cada taza servida con intención."
-         data-en="Five favorites that sum up who we are — Mexican tradition, modern technique, every cup poured with intent.">
-        Cinco favoritos que resumen lo que somos — tradición mexicana, técnica moderna, cada taza servida con intención.
+         data-es="Diez favoritos que resumen lo que somos — tradición mexicana, técnica moderna, cada taza servida con intención."
+         data-en="Ten favorites that sum up who we are — Mexican tradition, modern technique, every cup poured with intent.">
+        Diez favoritos que resumen lo que somos — tradición mexicana, técnica moderna, cada taza servida con intención.
       </p>
+      <p class="drinks-scroll-hint handwritten"
+         data-es="← desliza para ver más →"
+         data-en="← swipe to see more →">← desliza para ver más →</p>
     </div>
 
-    <div class="drinks-row">
+    <div class="drinks-row" role="region" aria-label="Featured drinks carousel">
 
       <!-- 01. Café de Olla — Mexican tradition -->
       <article class="drink-card js-reveal" style="--d:0s">
@@ -359,6 +362,111 @@
              data-es="Método lento que revela el terruño del grano."
              data-en="Slow method that reveals the bean's terroir.">
             Método lento que revela el terruño del grano.
+          </p>
+          <div class="drink-price">$90</div>
+        </div>
+      </article>
+
+      <!-- 06. Horchata Latte — Mexican-inspired -->
+      <article class="drink-card js-reveal" style="--d:0s">
+        <span class="drink-num">06</span>
+        <img class="drink-img"
+             src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?w=600&h=700&fit=crop&q=85"
+             data-fallback="https://picsum.photos/seed/horchatalatte/600/700"
+             alt="" loading="lazy" />
+        <div class="drink-info">
+          <h3 data-es="Horchata Latte" data-en="Horchata Latte">Horchata Latte</h3>
+          <p class="handwritten drink-note"
+             data-es="arroz · canela · vainilla mexicana"
+             data-en="rice · cinnamon · Mexican vanilla">arroz · canela · vainilla mexicana</p>
+          <p class="drink-desc"
+             data-es="Nuestro guiño a la abuela — espresso sobre horchata."
+             data-en="Our nod to abuela — espresso poured over horchata.">
+            Nuestro guiño a la abuela — espresso sobre horchata.
+          </p>
+          <div class="drink-price">$95</div>
+        </div>
+      </article>
+
+      <!-- 07. Cortado -->
+      <article class="drink-card js-reveal" style="--d:.08s">
+        <span class="drink-num">07</span>
+        <img class="drink-img"
+             src="https://images.unsplash.com/photo-1494314671902-399b18174975?w=600&h=700&fit=crop&q=85"
+             data-fallback="https://picsum.photos/seed/cortado/600/700"
+             alt="" loading="lazy" />
+        <div class="drink-info">
+          <h3 data-es="Cortado" data-en="Cortado">Cortado</h3>
+          <p class="handwritten drink-note"
+             data-es="balance perfecto · 1:1"
+             data-en="perfect balance · 1:1">balance perfecto · 1:1</p>
+          <p class="drink-desc"
+             data-es="Un espresso cortado con leche texturizada, sin espuma."
+             data-en="Espresso cut with silky steamed milk, no foam.">
+            Un espresso cortado con leche texturizada, sin espuma.
+          </p>
+          <div class="drink-price">$75</div>
+        </div>
+      </article>
+
+      <!-- 08. Cappuccino -->
+      <article class="drink-card js-reveal" style="--d:.16s">
+        <span class="drink-num">08</span>
+        <img class="drink-img"
+             src="https://images.unsplash.com/photo-1534778101976-62847782c213?w=600&h=700&fit=crop&q=85"
+             data-fallback="https://picsum.photos/seed/cappuccino/600/700"
+             alt="" loading="lazy" />
+        <div class="drink-info">
+          <h3 data-es="Cappuccino" data-en="Cappuccino">Cappuccino</h3>
+          <p class="handwritten drink-note"
+             data-es="espuma densa · cacao"
+             data-en="dense foam · cocoa">espuma densa · cacao</p>
+          <p class="drink-desc"
+             data-es="Tres tercios en armonía: espresso, leche, espuma."
+             data-en="Three thirds in harmony: espresso, milk, foam.">
+            Tres tercios en armonía: espresso, leche, espuma.
+          </p>
+          <div class="drink-price">$85</div>
+        </div>
+      </article>
+
+      <!-- 09. Cold Brew Nitro -->
+      <article class="drink-card js-reveal" style="--d:.24s">
+        <span class="drink-num">09</span>
+        <img class="drink-img"
+             src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&h=700&fit=crop&q=85"
+             data-fallback="https://picsum.photos/seed/coldbrew/600/700"
+             alt="" loading="lazy" />
+        <div class="drink-info">
+          <h3 data-es="Nitro Cold Brew" data-en="Nitro Cold Brew">Nitro Cold Brew</h3>
+          <p class="handwritten drink-note"
+             data-es="nitrógeno · sedoso · cascada"
+             data-en="nitrogen · silky · cascade">nitrógeno · sedoso · cascada</p>
+          <p class="drink-desc"
+             data-es="Infusión fría servida con nitrógeno — textura de cerveza."
+             data-en="Cold-brewed infusion on nitro — cream-stout texture.">
+            Infusión fría servida con nitrógeno — textura de cerveza.
+          </p>
+          <div class="drink-price">$95</div>
+        </div>
+      </article>
+
+      <!-- 10. Chai Latte -->
+      <article class="drink-card js-reveal" style="--d:.32s">
+        <span class="drink-num">10</span>
+        <img class="drink-img"
+             src="https://images.unsplash.com/photo-1597481499750-3e6b22637e12?w=600&h=700&fit=crop&q=85"
+             data-fallback="https://picsum.photos/seed/chailatte/600/700"
+             alt="" loading="lazy" />
+        <div class="drink-info">
+          <h3 data-es="Chai Latte" data-en="Chai Latte">Chai Latte</h3>
+          <p class="handwritten drink-note"
+             data-es="cardamomo · jengibre · clavo"
+             data-en="cardamom · ginger · clove">cardamomo · jengibre · clavo</p>
+          <p class="drink-desc"
+             data-es="Especias orientales cocidas lento con leche al vapor."
+             data-en="Eastern spices slow-simmered with steamed milk.">
+            Especias orientales cocidas lento con leche al vapor.
           </p>
           <div class="drink-price">$90</div>
         </div>
