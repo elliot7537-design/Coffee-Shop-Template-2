@@ -663,6 +663,123 @@ body.cursor-click #c-dot  { transform: translate(-50%,-50%) scale(.7); }
 .menu-item span:last-child { color: var(--ochre); font-size: .88rem; white-space: nowrap; }
 
 /* ═══════════════════════════════════════════════
+   FEATURED DRINKS
+   ═══════════════════════════════════════════════ */
+.drinks-section {
+  background: var(--paper);
+  padding: 6rem 6%;
+  position: relative;
+}
+.drinks-header {
+  max-width: 760px;
+  margin: 0 auto 4rem;
+  text-align: center;
+}
+.drinks-header h2 { margin-bottom: 1.2rem; }
+.drinks-subtitle {
+  max-width: 540px;
+  margin: 0 auto;
+  font-size: 1rem;
+}
+
+/* Row of 5 cards */
+.drinks-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.1rem;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.drink-card {
+  position: relative;
+  background: var(--cream);
+  padding: 1rem 1rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform .45s var(--spring), box-shadow .45s ease;
+  border: 1px solid rgba(26,15,8,.05);
+}
+.drink-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 34px rgba(26,15,8,.14);
+  z-index: 2;
+}
+
+.drink-num {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  z-index: 3;
+  font-family: var(--font-b);
+  font-size: .62rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--cream);
+  background: rgba(26,15,8,.65);
+  padding: .2rem .55rem;
+  backdrop-filter: blur(4px);
+}
+
+.drink-img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 6 / 7;
+  object-fit: cover;
+  margin-bottom: 1.1rem;
+  filter: saturate(.88) contrast(1.02);
+  transition: filter .5s ease, transform .5s var(--spring);
+}
+.drink-card:hover .drink-img {
+  filter: saturate(1.08) contrast(1.04);
+}
+
+.drink-info h3 {
+  font-family: var(--font-d);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: .25rem;
+  line-height: 1.15;
+}
+.drink-note {
+  font-family: var(--font-h);
+  font-size: 1.05rem;
+  color: var(--rust);
+  margin-bottom: .7rem;
+  line-height: 1.2;
+}
+.drink-desc {
+  font-size: .82rem;
+  line-height: 1.65;
+  color: color-mix(in srgb, var(--ink) 58%, transparent);
+  margin-bottom: 1rem;
+  min-height: 3.2em;
+  font-weight: 300;
+}
+.drink-price {
+  font-family: var(--font-d);
+  font-weight: 900;
+  font-style: italic;
+  font-size: 1.55rem;
+  color: var(--ochre);
+  line-height: 1;
+  padding-top: .5rem;
+  border-top: 1px dashed rgba(26,15,8,.12);
+}
+
+@media (max-width: 1200px) {
+  .drinks-row { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 720px) {
+  .drinks-section { padding: 4rem 5%; }
+  .drinks-row { grid-template-columns: repeat(2, 1fr); gap: .8rem; }
+  .drink-desc { min-height: auto; margin-bottom: .8rem; }
+  .drinks-header { margin-bottom: 2.5rem; }
+}
+
+/* ═══════════════════════════════════════════════
    ART GALLERY
    ═══════════════════════════════════════════════ */
 .art-section { padding: 8rem 6%; background: var(--cream); }
