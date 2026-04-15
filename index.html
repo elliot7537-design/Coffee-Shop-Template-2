@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700;1,9..144,900&family=Caveat:wght@400;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=4" />
+  <link rel="stylesheet" href="styles.css?v=5" />
 </head>
 <body>
 
@@ -34,34 +34,32 @@
     </div>
   </nav>
 
-  <!-- ═══════════════════ HERO (mural) ═══════════════════ -->
+  <!-- ═══════════════════ HERO (gallery piece) ═══════════════════ -->
   <section id="hero">
-    <!-- Painted wall backdrop -->
+    <!-- Painted wall backdrop: solid color panels, no squiggles -->
     <div class="mural-bg" aria-hidden="true">
       <div class="mural-paint mp-1"></div>
       <div class="mural-paint mp-2"></div>
       <div class="mural-paint mp-3"></div>
-      <svg class="mural-brush" viewBox="0 0 1200 400" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M 40 230 C 260 80, 520 320, 780 190 S 1080 110, 1170 210"
-              stroke="#bf4a22" stroke-width="140" fill="none" opacity="0.22" stroke-linecap="round"/>
-        <path d="M 110 270 C 320 170, 560 340, 820 230 S 1030 180, 1120 270"
-              stroke="#c98a1e" stroke-width="72" fill="none" opacity="0.20" stroke-linecap="round"/>
-        <path d="M 90 320 C 290 260, 540 360, 760 300 S 990 270, 1100 320"
-              stroke="#546637" stroke-width="26" fill="none" opacity="0.28" stroke-linecap="round"/>
-      </svg>
+      <!-- Big painted color block behind the title, like a mural's painted rectangle -->
+      <div class="mural-block"></div>
+      <!-- Vertical paint drips (no curves) -->
+      <span class="drip dr-1"></span>
+      <span class="drip dr-2"></span>
+      <span class="drip dr-3"></span>
+      <span class="drip dr-4"></span>
+      <!-- Paint dots / splatters -->
       <span class="splatter sp-1"></span>
       <span class="splatter sp-2"></span>
       <span class="splatter sp-3"></span>
       <span class="splatter sp-4"></span>
       <span class="splatter sp-5"></span>
-      <span class="drip dr-1"></span>
-      <span class="drip dr-2"></span>
     </div>
 
     <!-- Location sticker -->
     <div class="hero-sticker magnetic" data-es="Roma Norte · CDMX" data-en="Roma Norte · CDMX">Roma Norte · CDMX</div>
 
-    <!-- Pinned polaroids scattered across the mural -->
+    <!-- Pinned polaroids scattered across the wall -->
     <div class="hero-collage" id="heroCollage">
       <div class="polaroid p1" data-base-rotate="-8">
         <span class="tape-pin"></span>
@@ -70,7 +68,7 @@
       </div>
       <div class="polaroid p2" data-base-rotate="7">
         <span class="tape-pin"></span>
-        <div class="pol-img" style="background-image:url('https://images.unsplash.com/photo-1549289524-06cf8837ace5?w=1400&q=85')"></div>
+        <div class="pol-img" style="background-image:url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1400&q=85')"></div>
         <p class="handwritten" data-es="arte local" data-en="local art">arte local</p>
       </div>
       <div class="polaroid p3" data-base-rotate="-4">
@@ -78,23 +76,6 @@
         <div class="pol-img" style="background-image:url('https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=1400&q=85')"></div>
         <p class="handwritten" data-es="el ritual" data-en="the ritual">el ritual</p>
       </div>
-    </div>
-
-    <!-- Painter's signature flourish (bottom-left, like a signed canvas) -->
-    <div class="mural-sig" aria-hidden="true">
-      <svg class="sig-stroke" viewBox="0 0 220 72" xmlns="http://www.w3.org/2000/svg">
-        <!-- Flowing signature curve -->
-        <path d="M 8 42 C 18 10, 30 52, 44 30 S 62 12, 74 34 S 92 52, 108 28 S 128 10, 144 32 S 166 50, 188 26 L 212 22"
-              stroke="#bf4a22" stroke-width="2.6" fill="none"
-              stroke-linecap="round" stroke-linejoin="round"/>
-        <!-- Dot on the "i" / finish mark -->
-        <circle cx="214" cy="14" r="2.4" fill="#bf4a22"/>
-        <!-- Underscore flourish -->
-        <path d="M 16 58 Q 100 48, 196 56"
-              stroke="#bf4a22" stroke-width="1.6" fill="none"
-              stroke-linecap="round" opacity="0.55"/>
-      </svg>
-      <span class="sig-year">MMXXV · CDMX</span>
     </div>
 
     <!-- Centerpiece text -->
@@ -115,6 +96,14 @@
         <a href="#arte"  class="pill-btn pill-ghost magnetic" data-es="Ver la galería" data-en="See the gallery">Ver la galería</a>
       </div>
     </div>
+
+    <!-- Museum exhibition plaque (bottom-right, replaces squiggle signature) -->
+    <aside class="mural-plaque" aria-hidden="true">
+      <p class="pl-head">EXPOSICIÓN PERMANENTE</p>
+      <p class="pl-title">Bruma</p>
+      <p class="pl-sub">Café &amp; Arte Contemporáneo</p>
+      <p class="pl-meta">EST. MMXVIII · CDMX</p>
+    </aside>
   </section>
 
   <!-- ═══════════════════ MARQUEE ═══════════════════ -->
@@ -143,7 +132,7 @@
         <p class="handwritten" data-es="tostado en casa" data-en="roasted in-house">tostado en casa</p>
       </div>
       <div class="polaroid ab-p2" data-base-rotate="3">
-        <div class="pol-img" style="background-image:url('https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=1200&q=85')"></div>
+        <div class="pol-img" style="background-image:url('https://images.unsplash.com/photo-1541167760496-1628856ab772?w=1200&q=85')"></div>
         <p class="handwritten" data-es="paredes que hablan" data-en="walls that speak">paredes que hablan</p>
       </div>
       <div class="about-tape-h"></div>
@@ -280,7 +269,7 @@
     <div class="gallery-wall">
       <div class="gallery-col gallery-col-1">
         <div class="artwork js-reveal" style="--d:0s">
-          <div class="canvas-frame" style="background-image:url('https://images.unsplash.com/photo-1549887552-cb1071d3e5ca?w=1200&q=85')"></div>
+          <div class="canvas-frame" style="background-image:url('https://picsum.photos/seed/bruma-oleo-1/900/1040')"></div>
           <div class="museum-label">
             <p class="ml-artist">Gabriela Moreno</p>
             <p class="ml-title handwritten" data-es="Sin título I" data-en="Untitled I">Sin título I</p>
@@ -288,7 +277,7 @@
           </div>
         </div>
         <div class="artwork artwork-sm js-reveal" style="--d:.15s">
-          <div class="canvas-frame" style="background-image:url('https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=1200&q=85')"></div>
+          <div class="canvas-frame" style="background-image:url('https://picsum.photos/seed/bruma-acuarela/900/740')"></div>
           <div class="museum-label">
             <p class="ml-artist">Ana Castillo</p>
             <p class="ml-title handwritten" data-es="Forma del agua" data-en="Water Form">Forma del agua</p>
@@ -299,7 +288,7 @@
 
       <div class="gallery-col gallery-col-2">
         <div class="artwork artwork-sm js-reveal" style="--d:.08s">
-          <div class="canvas-frame" style="background-image:url('https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=1200&q=85')"></div>
+          <div class="canvas-frame" style="background-image:url('https://picsum.photos/seed/bruma-mixta/900/740')"></div>
           <div class="museum-label">
             <p class="ml-artist">Tomás Ríos</p>
             <p class="ml-title handwritten" data-es="Ciudad difusa" data-en="Blurred City">Ciudad difusa</p>
@@ -307,7 +296,7 @@
           </div>
         </div>
         <div class="artwork js-reveal" style="--d:.2s">
-          <div class="canvas-frame" style="background-image:url('https://images.unsplash.com/photo-1536924940846-227afb31e2a5?w=1200&q=85')"></div>
+          <div class="canvas-frame" style="background-image:url('https://picsum.photos/seed/bruma-acrilico/900/1040')"></div>
           <div class="museum-label">
             <p class="ml-artist">Luciana Torres</p>
             <p class="ml-title handwritten" data-es="Raíces" data-en="Roots">Raíces</p>
@@ -318,7 +307,7 @@
 
       <div class="gallery-col gallery-col-3">
         <div class="artwork js-reveal" style="--d:.12s">
-          <div class="canvas-frame" style="background-image:url('https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=1200&q=85')"></div>
+          <div class="canvas-frame" style="background-image:url('https://picsum.photos/seed/bruma-oleo-2/900/1040')"></div>
           <div class="museum-label">
             <p class="ml-artist">Diego Vargas</p>
             <p class="ml-title handwritten" data-es="Noche de lluvia" data-en="Rainy Night">Noche de lluvia</p>
@@ -326,7 +315,7 @@
           </div>
         </div>
         <div class="artwork artwork-sm js-reveal" style="--d:.25s">
-          <div class="canvas-frame" style="background-image:url('https://images.unsplash.com/photo-1547891654-e66ed7ebb968?w=1200&q=85')"></div>
+          <div class="canvas-frame" style="background-image:url('https://picsum.photos/seed/bruma-grabado/900/740')"></div>
           <div class="museum-label">
             <p class="ml-artist">Valentina Cruz</p>
             <p class="ml-title handwritten" data-es="Mercado I" data-en="Market I">Mercado I</p>
@@ -491,6 +480,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=4"></script>
+  <script src="script.js?v=5"></script>
 </body>
 </html>
