@@ -295,30 +295,7 @@ body.cursor-click #c-dot  { transform: translate(-50%,-50%) scale(.7); }
   isolation: isolate;
 }
 
-/* ── Main artwork — centered background image ──
-   z:1 so ALL text (z:3+) sits on top.
-   Correct Wikimedia Commons filename: Meisje_met_de_parel.jpg
-   No mix-blend-mode — plain opacity so the painting is clearly
-   visible on the cream background.                             */
-.hero-main-art {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1;
-  pointer-events: none;
-}
-.hero-main-img {
-  display: block;
-  width: clamp(280px, 34vw, 520px);
-  height: clamp(380px, 62vh, 820px);
-  object-fit: contain;
-  object-position: center top;
-  filter: sepia(.12) brightness(.9);
-  opacity: .55;
-}
-
-/* ── The big overlapping words — all in front of artwork (z:3) ── */
+/* ── The big overlapping words (z:3) — the composition's visual anchor ── */
 .hw {
   position: absolute;
   font-family: var(--font-d);
@@ -539,11 +516,6 @@ body.cursor-click #c-dot  { transform: translate(-50%,-50%) scale(.7); }
   .hw-word-2 { font-size: clamp(4rem, 22vw, 13rem); top: 13%; }
   .hw-word-3 { font-size: clamp(2.5rem, 11vw, 6rem); bottom: 24%; }
   .hw-word-4 { font-size: clamp(4rem, 20vw, 11rem); bottom: 4%; }
-  .hero-main-img {
-    width: clamp(180px, 55vw, 300px);
-    height: clamp(240px, 72vw, 420px);
-    object-fit: contain;
-  }
   .hero-info,
   .hero-label-right { display: none; }
   .hero-script { font-size: clamp(1.5rem, 6vw, 3rem); right: 3%; bottom: 38%; }
