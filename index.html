@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bruma — Café & Arte · CDMX</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="#" class="nav-logo">BRUMA</a>
+    <ul class="nav-links">
+      <li><a href="#nosotros" data-es="Nosotros" data-en="About">Nosotros</a></li>
+      <li><a href="#menu" data-es="Menú" data-en="Menu">Menú</a></li>
+      <li><a href="#galeria" data-es="Galería" data-en="Gallery">Galería</a></li>
+      <li><a href="#visita" data-es="Visítanos" data-en="Visit">Visítanos</a></li>
+    </ul>
+    <button class="lang-toggle" id="langToggle" aria-label="Switch language">
+      <span class="lang-opt active" id="es-opt">ES</span>
+      <span class="lang-divider">/</span>
+      <span class="lang-opt" id="en-opt">EN</span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-text">
+      <p class="hero-eyebrow" data-es="Café · Arte · Ciudad de México" data-en="Coffee · Art · Mexico City">Café · Arte · Ciudad de México</p>
+      <h1 class="hero-heading">
+        <span class="serif-italic" data-es="Donde el café" data-en="Where coffee">Donde el café</span><br />
+        <span data-es="se vuelve arte." data-en="becomes art.">se vuelve arte.</span>
+      </h1>
+      <a href="#menu" class="btn-outline" data-es="Ver el menú" data-en="See the menu">Ver el menú</a>
+    </div>
+    <div class="hero-image-wrap">
+      <div class="hero-img hero-img-1"></div>
+      <div class="hero-img hero-img-2"></div>
+      <div class="hero-badge">
+        <svg viewBox="0 0 100 100" width="100" height="100">
+          <path id="circlePath" d="M 50,50 m -35,0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="none"/>
+          <text font-size="10.5" fill="currentColor" font-family="DM Sans, sans-serif" letter-spacing="3">
+            <textPath href="#circlePath" data-es="CDMX · CAFÉ &amp; ARTE · BRUMA · " data-en="CDMX · COFFEE &amp; ART · BRUMA · ">CDMX · CAFÉ &amp; ARTE · BRUMA · </textPath>
+          </text>
+        </svg>
+        <span class="badge-icon">☕</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-bar">
+    <div class="marquee-track">
+      <span data-es="Orgánico" data-en="Organic">Orgánico</span>
+      <span class="dot">✦</span>
+      <span data-es="Pequeños lotes" data-en="Small Batch">Pequeños lotes</span>
+      <span class="dot">✦</span>
+      <span data-es="Arte emergente" data-en="Emerging Art">Arte emergente</span>
+      <span class="dot">✦</span>
+      <span data-es="Origen único" data-en="Single Origin">Origen único</span>
+      <span class="dot">✦</span>
+      <span data-es="Hecho en México" data-en="Made in Mexico">Hecho en México</span>
+      <span class="dot">✦</span>
+      <span data-es="Orgánico" data-en="Organic">Orgánico</span>
+      <span class="dot">✦</span>
+      <span data-es="Pequeños lotes" data-en="Small Batch">Pequeños lotes</span>
+      <span class="dot">✦</span>
+      <span data-es="Arte emergente" data-en="Emerging Art">Arte emergente</span>
+      <span class="dot">✦</span>
+      <span data-es="Origen único" data-en="Single Origin">Origen único</span>
+      <span class="dot">✦</span>
+      <span data-es="Hecho en México" data-en="Made in Mexico">Hecho en México</span>
+      <span class="dot">✦</span>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="nosotros" class="about">
+    <div class="about-image-col">
+      <div class="about-img about-img-tall"></div>
+      <div class="about-img about-img-short"></div>
+    </div>
+    <div class="about-text-col">
+      <p class="section-label" data-es="01 / Nosotros" data-en="01 / About">01 / Nosotros</p>
+      <h2 data-es="Una taza nunca es<br/><em>solo una taza.</em>" data-en="A cup is never<br/><em>just a cup.</em>">Una taza nunca es<br /><em>solo una taza.</em></h2>
+      <p class="body-text" data-es="Bruma nació en la Colonia Roma con una idea sencilla: que el café de especialidad y el arte emergente merecen compartir el mismo espacio. Cada grano viene de cooperativas con quienes nos conocemos por nombre. Cada obra en nuestras paredes es de un artista de la ciudad." data-en="Bruma was born in Colonia Roma with a simple idea: specialty coffee and emerging art deserve to share the same space. Every bean comes from cooperatives we know by name. Every work on our walls is by an artist from the city.">
+        Bruma nació en la Colonia Roma con una idea sencilla: que el café de especialidad y el arte emergente merecen compartir el mismo espacio. Cada grano viene de cooperativas con quienes nos conocemos por nombre. Cada obra en nuestras paredes es de un artista de la ciudad.
+      </p>
+      <a href="#nosotros" class="link-arrow" data-es="Conoce al equipo →" data-en="Meet the team →">Conoce al equipo →</a>
+      <div class="about-stats">
+        <div class="stat">
+          <span class="stat-num">100%</span>
+          <span class="stat-label" data-es="Café certificado orgánico" data-en="Certified organic coffee">Café certificado orgánico</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">18</span>
+          <span class="stat-label" data-es="Artistas en residencia" data-en="Artists in residence">Artistas en residencia</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">0</span>
+          <span class="stat-label" data-es="Intermediarios" data-en="Middlemen">Intermediarios</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORIGINS -->
+  <section class="origins">
+    <p class="section-label" data-es="02 / Origen" data-en="02 / Origin">02 / Origen</p>
+    <h2 class="origins-heading" data-es="De las montañas<br/><em>de México.</em>" data-en="From the mountains<br/><em>of Mexico.</em>">De las montañas<br /><em>de México.</em></h2>
+    <p class="origins-sub body-text" data-es="Cada grano que servimos tiene una historia. Cultivado con cuidado, cosechado a mano, tostado en pequeños lotes." data-en="Every bean we serve has a story. Grown with care, hand-harvested, roasted in small batches.">
+      Cada grano que servimos tiene una historia. Cultivado con cuidado, cosechado a mano, tostado en pequeños lotes.
+    </p>
+    <div class="origins-grid">
+      <div class="origin-card">
+        <div class="origin-img origin-chiapas"></div>
+        <div class="origin-info">
+          <h3>Chiapas</h3>
+          <p class="body-text" data-es="Notas de chocolate oscuro, canela y frutos rojos." data-en="Notes of dark chocolate, cinnamon and red fruits.">Notas de chocolate oscuro, canela y frutos rojos.</p>
+          <div class="origin-tags">
+            <span data-es="Lavado" data-en="Washed">Lavado</span>
+            <span data-es="1400 msnm" data-en="1400 masl">1400 msnm</span>
+          </div>
+        </div>
+      </div>
+      <div class="origin-card">
+        <div class="origin-img origin-oaxaca"></div>
+        <div class="origin-info">
+          <h3>Oaxaca</h3>
+          <p class="body-text" data-es="Floral, cítrico, con una acidez brillante y final largo." data-en="Floral, citric, with a bright acidity and long finish.">Floral, cítrico, con una acidez brillante y final largo.</p>
+          <div class="origin-tags">
+            <span data-es="Natural" data-en="Natural">Natural</span>
+            <span data-es="1600 msnm" data-en="1600 masl">1600 msnm</span>
+          </div>
+        </div>
+      </div>
+      <div class="origin-card">
+        <div class="origin-img origin-veracruz"></div>
+        <div class="origin-info">
+          <h3>Veracruz</h3>
+          <p class="body-text" data-es="Cuerpo cremoso, nuez y un dulzor natural de caramelo." data-en="Creamy body, nutty and a natural caramel sweetness.">Cuerpo cremoso, nuez y un dulzor natural de caramelo.</p>
+          <div class="origin-tags">
+            <span data-es="Honey" data-en="Honey">Honey</span>
+            <span data-es="1200 msnm" data-en="1200 masl">1200 msnm</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section id="menu" class="menu-section">
+    <div class="menu-header">
+      <p class="section-label" data-es="03 / Menú" data-en="03 / Menu">03 / Menú</p>
+      <h2 data-es="Bebidas &amp; <em>rituales.</em>" data-en="Brews &amp; <em>rituals.</em>">Bebidas &amp; <em>rituales.</em></h2>
+    </div>
+    <div class="menu-cols">
+      <div class="menu-col">
+        <h4 data-es="Espresso" data-en="Espresso">Espresso</h4>
+        <ul class="menu-list">
+          <li><span data-es="Espresso" data-en="Espresso">Espresso</span><span>$65</span></li>
+          <li><span data-es="Cortado" data-en="Cortado">Cortado</span><span>$75</span></li>
+          <li><span data-es="Flat White" data-en="Flat White">Flat White</span><span>$85</span></li>
+          <li><span data-es="Café de Olla" data-en="Café de Olla">Café de Olla</span><span>$70</span></li>
+          <li><span data-es="Brumoso" data-en="Brumoso">Brumoso</span><span>$95</span></li>
+        </ul>
+      </div>
+      <div class="menu-col">
+        <h4 data-es="Brew Lab" data-en="Brew Lab">Brew Lab</h4>
+        <ul class="menu-list">
+          <li><span data-es="V60 Por Chirriar" data-en="V60 Por Chirriar">V60 Por Chirriar</span><span>$95</span></li>
+          <li><span data-es="Chemex" data-en="Chemex">Chemex</span><span>$90</span></li>
+          <li><span data-es="Aeropress" data-en="Aeropress">Aeropress</span><span>$85</span></li>
+          <li><span data-es="Cold Brew" data-en="Cold Brew">Cold Brew</span><span>$80</span></li>
+          <li><span data-es="Nitro" data-en="Nitro">Nitro</span><span>$95</span></li>
+        </ul>
+      </div>
+      <div class="menu-col">
+        <h4 data-es="Elixir" data-en="Elixir">Elixir</h4>
+        <ul class="menu-list">
+          <li><span data-es="Concha de cardamomo" data-en="Cardamom shell">Concha de cardamomo</span><span>$85</span></li>
+          <li><span data-es="Pico de gallo frío" data-en="Pico de gallo cold">Pico de gallo frío</span><span>$90</span></li>
+          <li><span data-es="Tostada de ajengibre" data-en="Ginger toast">Tostada de ajengibre</span><span>$100</span></li>
+          <li><span data-es="Chilaquiles a vapor" data-en="Steamed chilaquiles">Chilaquiles a vapor</span><span>$105</span></li>
+          <li><span data-es="Granado de cacao" data-en="Cacao granado">Granado de cacao</span><span>$80</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="menu-note" data-es="Todos nuestros granos son de origen único y tostados en pequeños lotes en nuestra tienda." data-en="All our beans are single origin and roasted in small batches in our shop.">
+      Todos nuestros granos son de origen único y tostados en pequeños lotes en nuestra tienda.
+    </p>
+  </section>
+
+  <!-- ART SECTION -->
+  <section id="galeria" class="art-section">
+    <div class="art-intro">
+      <p class="section-label" data-es="04 / Arte" data-en="04 / Art">04 / Arte</p>
+      <h2 data-es="El arte del<br/><em>espacio.</em>" data-en="The art of<br/><em>the space.</em>">El arte del<br /><em>espacio.</em></h2>
+      <p class="body-text" data-es="Colaboramos con artistas emergentes de la Ciudad de México. Nuestras paredes son una galería viva que cambia cada temporada. Toda obra está a la venta." data-en="We collaborate with emerging artists from Mexico City. Our walls are a living gallery that changes every season. All works are for sale.">
+        Colaboramos con artistas emergentes de la Ciudad de México. Nuestras paredes son una galería viva que cambia cada temporada. Toda obra está a la venta.
+      </p>
+    </div>
+    <div class="art-grid">
+      <div class="art-item art-tall art-c1"></div>
+      <div class="art-item art-c2"></div>
+      <div class="art-item art-c3"></div>
+      <div class="art-item art-wide art-c4"></div>
+      <div class="art-item art-c5"></div>
+    </div>
+    <blockquote class="art-quote">
+      <p data-es='"No vendemos café — traducimos un lugar en una taza."' data-en='"We don&apos;t sell coffee — we translate a place into a cup."'>"No vendemos café — traducimos un lugar en una taza."</p>
+      <cite data-es="— Lucía Vega, Fundadora" data-en="— Lucía Vega, Founder">— Lucía Vega, Fundadora</cite>
+    </blockquote>
+
+    <!-- Current Exhibition -->
+    <div class="exhibition">
+      <p class="section-label" data-es="Exposición actual" data-en="Current Exhibition">Exposición actual</p>
+      <div class="exhibition-grid">
+        <div class="exhibition-card">
+          <div class="ex-img ex-img-1"></div>
+          <div class="ex-info">
+            <h3>Gabriela Moreno</h3>
+            <p class="ex-title" data-es="«Raíces de noche»" data-en="«Night Roots»">«Raíces de noche»</p>
+            <p class="body-text ex-desc" data-es="Óleo y acrílico sobre tela. Serie de 8 piezas que explora la memoria colectiva del suelo mexicano." data-en="Oil and acrylic on canvas. Series of 8 pieces exploring the collective memory of Mexican soil.">Óleo y acrílico sobre tela. Serie de 8 piezas que explora la memoria colectiva del suelo mexicano.</p>
+            <a href="#galeria" class="link-arrow" data-es="Ver la serie →" data-en="View the series →">Ver la serie →</a>
+          </div>
+        </div>
+        <div class="exhibition-card">
+          <div class="ex-img ex-img-2"></div>
+          <div class="ex-info">
+            <h3>Tomás Ríos</h3>
+            <p class="ex-title" data-es="«Ciudad difusa»" data-en="«Blurred City»">«Ciudad difusa»</p>
+            <p class="body-text ex-desc" data-es="Fotografía analógica. Retratos de la vida cotidiana en el Centro Histórico de CDMX." data-en="Analog photography. Portraits of daily life in CDMX's Historic Center.">Fotografía analógica. Retratos de la vida cotidiana en el Centro Histórico de CDMX.</p>
+            <a href="#galeria" class="link-arrow" data-es="Ver la serie →" data-en="View the series →">Ver la serie →</a>
+          </div>
+        </div>
+        <div class="exhibition-card">
+          <div class="ex-img ex-img-3"></div>
+          <div class="ex-info">
+            <h3>Ana Castillo</h3>
+            <p class="ex-title" data-es="«Formas del agua»" data-en="«Water Forms»">«Formas del agua»</p>
+            <p class="body-text ex-desc" data-es="Cerámica y escultura. Piezas que dialogan con la tradición alfarera de Oaxaca." data-en="Ceramics and sculpture. Pieces that dialogue with Oaxacan pottery traditions.">Cerámica y escultura. Piezas que dialogan con la tradición alfarera de Oaxaca.</p>
+            <a href="#galeria" class="link-arrow" data-es="Ver la serie →" data-en="View the series →">Ver la serie →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section id="visita" class="visit-section">
+    <div class="visit-text">
+      <p class="section-label" data-es="05 / Visita" data-en="05 / Visit">05 / Visita</p>
+      <h2 data-es="Entra.<br/><em>Quédate un rato.</em>" data-en="Come in.<br/><em>Stay a while.</em>">Entra.<br /><em>Quédate un rato.</em></h2>
+      <div class="visit-details">
+        <div class="visit-col">
+          <p class="visit-label" data-es="Horario" data-en="Hours">Horario</p>
+          <p data-es="Lun–Vie: 07:00–21:00" data-en="Mon–Fri: 07:00–21:00">Lun–Vie: 07:00–21:00</p>
+          <p data-es="Sáb–Dom: 08:00–22:00" data-en="Sat–Sun: 08:00–22:00">Sáb–Dom: 08:00–22:00</p>
+        </div>
+        <div class="visit-col">
+          <p class="visit-label" data-es="Dirección" data-en="Address">Dirección</p>
+          <p>Orizaba 42, Colonia Roma Norte</p>
+          <p>Ciudad de México, 06700</p>
+        </div>
+        <div class="visit-col">
+          <p class="visit-label" data-es="Contacto" data-en="Contact">Contacto</p>
+          <p>hola@brumacafe.mx</p>
+          <p>+52 55 4321 0987</p>
+        </div>
+      </div>
+      <a href="#visita" class="btn-dark" data-es="Reservar una mesa" data-en="Reserve a table">Reservar una mesa</a>
+    </div>
+    <div class="visit-image"></div>
+  </section>
+
+  <!-- FOOTER CTA -->
+  <section class="footer-cta">
+    <h2 data-es="Hagamos algo<br/><em>juntos.</em>" data-en="Let's make something<br/><em>together.</em>">Hagamos algo<br /><em>juntos.</em></h2>
+    <div class="footer-cta-links">
+      <a href="#" data-es="Exposiciones" data-en="Exhibitions">Exposiciones</a>
+      <a href="#" data-es="Eventos privados" data-en="Private events">Eventos privados</a>
+      <a href="#" data-es="Colaboraciones" data-en="Collaborations">Colaboraciones</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <p class="footer-logo">BRUMA</p>
+        <p class="footer-tagline" data-es="Café &amp; Arte · Roma Norte · CDMX" data-en="Coffee &amp; Art · Roma Norte · CDMX">Café &amp; Arte · Roma Norte · CDMX</p>
+      </div>
+      <div class="footer-nav">
+        <div class="footer-col">
+          <p class="footer-col-title" data-es="Explorar" data-en="Explore">Explorar</p>
+          <a href="#nosotros" data-es="Nosotros" data-en="About">Nosotros</a>
+          <a href="#menu" data-es="Menú" data-en="Menu">Menú</a>
+          <a href="#galeria" data-es="Galería" data-en="Gallery">Galería</a>
+          <a href="#visita" data-es="Visita" data-en="Visit">Visita</a>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-title" data-es="Síguenos" data-en="Follow">Síguenos</p>
+          <a href="#">Instagram</a>
+          <a href="#">TikTok</a>
+          <a href="#">Pinterest</a>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-title" data-es="Newsletter" data-en="Newsletter">Newsletter</p>
+          <p class="footer-newsletter-text" data-es="Novedades, exposiciones y recetas." data-en="News, exhibitions and recipes.">Novedades, exposiciones y recetas.</p>
+          <form class="newsletter-form" onsubmit="return false;">
+            <input type="email" placeholder="hola@tumail.com" data-es-placeholder="hola@tumail.com" data-en-placeholder="hello@yourmail.com" />
+            <button type="submit" data-es="→" data-en="→">→</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p data-es="© 2026 Bruma Café &amp; Arte. Todos los derechos reservados." data-en="© 2026 Bruma Coffee &amp; Art. All rights reserved.">© 2026 Bruma Café &amp; Arte. Todos los derechos reservados.</p>
+      <p data-es="Hecho con amor en la CDMX." data-en="Made with love in CDMX.">Hecho con amor en la CDMX.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
