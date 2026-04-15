@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700;1,9..144,900&family=Caveat:wght@400;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=5" />
+  <link rel="stylesheet" href="styles.css?v=6" />
 </head>
 <body>
 
@@ -34,76 +34,66 @@
     </div>
   </nav>
 
-  <!-- ═══════════════════ HERO (gallery piece) ═══════════════════ -->
+  <!-- ═══════════════════ HERO — Gallery Opening ═══════════════════ -->
   <section id="hero">
-    <!-- Painted wall backdrop: solid color panels, no squiggles -->
-    <div class="mural-bg" aria-hidden="true">
-      <div class="mural-paint mp-1"></div>
-      <div class="mural-paint mp-2"></div>
-      <div class="mural-paint mp-3"></div>
-      <!-- Big painted color block behind the title, like a mural's painted rectangle -->
-      <div class="mural-block"></div>
-      <!-- Vertical paint drips (no curves) -->
-      <span class="drip dr-1"></span>
-      <span class="drip dr-2"></span>
-      <span class="drip dr-3"></span>
-      <span class="drip dr-4"></span>
-      <!-- Paint dots / splatters -->
-      <span class="splatter sp-1"></span>
-      <span class="splatter sp-2"></span>
-      <span class="splatter sp-3"></span>
-      <span class="splatter sp-4"></span>
-      <span class="splatter sp-5"></span>
+
+    <!-- Deep painted left panel: the gallery wall -->
+    <div class="hero-panel" aria-hidden="true">
+      <div class="hero-panel-glow"></div>
     </div>
 
-    <!-- Location sticker -->
-    <div class="hero-sticker magnetic" data-es="Roma Norte · CDMX" data-en="Roma Norte · CDMX">Roma Norte · CDMX</div>
-
-    <!-- Pinned polaroids scattered across the wall -->
-    <div class="hero-collage" id="heroCollage">
-      <div class="polaroid p1" data-base-rotate="-8">
-        <span class="tape-pin"></span>
-        <div class="pol-img" style="background-image:url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1400&q=85')"></div>
-        <p class="handwritten" data-es="espresso perfecto" data-en="perfect espresso">espresso perfecto</p>
-      </div>
-      <div class="polaroid p2" data-base-rotate="7">
-        <span class="tape-pin"></span>
-        <div class="pol-img" style="background-image:url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1400&q=85')"></div>
-        <p class="handwritten" data-es="arte local" data-en="local art">arte local</p>
-      </div>
-      <div class="polaroid p3" data-base-rotate="-4">
-        <span class="tape-pin"></span>
-        <div class="pol-img" style="background-image:url('https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=1400&q=85')"></div>
-        <p class="handwritten" data-es="el ritual" data-en="the ritual">el ritual</p>
-      </div>
+    <!-- Right: atmospheric full-bleed photo — the featured artwork -->
+    <div class="hero-photo" aria-hidden="true">
+      <div class="hero-photo-img"></div>
+      <div class="hero-photo-fade"></div>
     </div>
 
-    <!-- Centerpiece text -->
+    <!-- Thin accent stripe — left-edge frame element -->
+    <div class="hero-stripe" aria-hidden="true"></div>
+
+    <!-- Registration crosshairs — fine art / print detail -->
+    <span class="hero-xhair hx-1" aria-hidden="true"></span>
+    <span class="hero-xhair hx-2" aria-hidden="true"></span>
+
+    <!-- Main editorial text (on the dark panel) -->
     <div class="hero-text">
-      <p class="hero-city handwritten" data-es="Ciudad de México" data-en="Mexico City">Ciudad de México</p>
+
+      <p class="hero-byline">
+        <span class="hb-num">CAT. 001</span>
+        <span class="hb-dot" aria-hidden="true">◆</span>
+        <span class="hb-loc" data-es="Roma Norte · CDMX" data-en="Roma Norte · CDMX">Roma Norte · CDMX</span>
+      </p>
+
+      <p class="hero-brand" aria-label="Bruma">BRUMA</p>
+
+      <div class="hero-rule" aria-hidden="true"></div>
+
       <h1 class="hero-title">
-        <span class="ht-cafe"  data-es="Café"  data-en="Coffee">Café</span>
-        <span class="ht-amp">&amp;</span>
-        <span class="ht-arte"  data-es="Arte"  data-en="Art">Arte</span>
+        <span class="ht-cafe handwritten" data-es="Café" data-en="Coffee">Café</span>
+        <span class="ht-amp" aria-hidden="true">&amp;</span>
+        <span class="ht-arte" data-es="Arte" data-en="Art">Arte</span>
       </h1>
+
       <p class="hero-sub body-text"
          data-es="Donde cada sorbo inspira y cada pared cuenta una historia — desde la Colonia Roma, CDMX."
          data-en="Where every sip inspires and every wall tells a story — from Colonia Roma, CDMX.">
         Donde cada sorbo inspira y cada pared cuenta una historia — desde la Colonia Roma, CDMX.
       </p>
+
       <div class="hero-ctas">
-        <a href="#cafe"  class="pill-btn magnetic" data-es="Ver el menú"    data-en="See the menu">Ver el menú</a>
-        <a href="#arte"  class="pill-btn pill-ghost magnetic" data-es="Ver la galería" data-en="See the gallery">Ver la galería</a>
+        <a href="#cafe" class="pill-btn pill-light magnetic" data-es="Ver el menú" data-en="See the menu">Ver el menú</a>
+        <a href="#arte" class="pill-btn pill-light-ghost magnetic" data-es="Ver la galería" data-en="See the gallery">Ver la galería</a>
       </div>
+
     </div>
 
-    <!-- Museum exhibition plaque (bottom-right, replaces squiggle signature) -->
-    <aside class="mural-plaque" aria-hidden="true">
-      <p class="pl-head">EXPOSICIÓN PERMANENTE</p>
-      <p class="pl-title">Bruma</p>
-      <p class="pl-sub">Café &amp; Arte Contemporáneo</p>
-      <p class="pl-meta">EST. MMXVIII · CDMX</p>
-    </aside>
+    <!-- Vertical year mark — decorative right edge -->
+    <p class="hero-est" aria-hidden="true">EST. MMXVIII</p>
+
+    <!-- Handwritten caption floating over the photo -->
+    <p class="hero-photo-caption handwritten"
+       data-es="colección permanente" data-en="permanent collection">colección permanente</p>
+
   </section>
 
   <!-- ═══════════════════ MARQUEE ═══════════════════ -->
@@ -480,6 +470,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=5"></script>
+  <script src="script.js?v=6"></script>
 </body>
 </html>
