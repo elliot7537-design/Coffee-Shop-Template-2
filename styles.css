@@ -950,6 +950,28 @@ body.cursor-click #c-dot  { transform: translate(-50%,-50%) scale(.7); }
 
 
 /* ═══════════════════════════════════════════════
+   MOBILE HERO ANIMATIONS
+   Portrait fades + scales in; each word slides in
+   from alternating sides with a fast ease-out.
+   ═══════════════════════════════════════════════ */
+@keyframes mob-portrait-in {
+  from { opacity: 0; scale: 0.88; }
+  to   { opacity: 1; scale: 1; }
+}
+@keyframes mob-word-left {
+  from { opacity: 0; translate: -56px 0; }
+  to   { opacity: 1; translate: 0 0; }
+}
+@keyframes mob-word-right {
+  from { opacity: 0; translate: 56px 0; }
+  to   { opacity: 1; translate: 0 0; }
+}
+@keyframes mob-cta-up {
+  from { opacity: 0; translate: 0 18px; }
+  to   { opacity: 1; translate: 0 0; }
+}
+
+/* ═══════════════════════════════════════════════
    RESPONSIVE — all breakpoints
    ═══════════════════════════════════════════════ */
 
@@ -1002,46 +1024,64 @@ body.cursor-click #c-dot  { transform: translate(-50%,-50%) scale(.7); }
   .nav-logo { font-size: 1.2rem; letter-spacing: .2em; }
   .lang-btn { padding: .28rem .72rem; font-size: .72rem; }
 
-  /* ── MOBILE HERO: flex column, everything centered ──
-     Hero becomes a simple poster: portrait on top,
-     words stacked below, pill CTAs at the bottom.    */
+  /* ── MOBILE HERO: bold centered poster ──
+     Portrait on top, massive type below, pill CTAs
+     at the bottom. Staggered slide-in animation.    */
   #hero {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: calc(var(--nav-h) + 2.5rem) 0 5.5rem;
+    padding: calc(var(--nav-h) + 1.2rem) 0 5.5rem;
     min-height: 100svh;
     overflow: hidden;
   }
 
-  /* Painting: centered, full-width constrained portrait */
+  /* Painting: big and centered */
   .hero-main-art {
     position: relative;
     top: auto; left: auto; right: auto; bottom: auto;
     transform: none;
-    width: clamp(150px, 54vw, 280px);
+    width: clamp(200px, 68vw, 360px);
     flex-shrink: 0;
-    margin-bottom: 1.8rem;
+    margin-bottom: 1rem;
+    animation: mob-portrait-in 0.7s cubic-bezier(0.22,1,0.36,1) both;
   }
   .hero-main-img {
     width: 100%;
-    max-height: 40svh;
+    max-height: 46svh;
     object-fit: contain;
   }
 
-  /* Words: centered vertical stack, join the flex flow */
+  /* Words: bold centered stack, join the flex flow */
   .hw-word-1, .hw-word-2, .hw-word-3, .hw-word-4 {
     position: relative;
     top: auto; left: auto; right: auto; bottom: auto;
     transform: none;
     text-align: center;
     width: 100%;
-    line-height: 0.88;
+    line-height: 0.86;
   }
-  .hw-word-1 { font-size: clamp(2rem, 10vw, 5rem); }
-  .hw-word-2 { font-size: clamp(4rem, 20vw, 9rem); margin-bottom: 0.6rem; }
-  .hw-word-3 { font-size: clamp(2rem, 10vw, 5rem); }
-  .hw-word-4 { font-size: clamp(4rem, 20vw, 9rem); }
+  /* EL / THE — accent size, slides in from left */
+  .hw-word-1 {
+    font-size: clamp(2.8rem, 14vw, 6.5rem);
+    animation: mob-word-left 0.55s 0.3s cubic-bezier(0.22,1,0.36,1) both;
+  }
+  /* CAFÉ — massive, fills most of screen width, slides from right */
+  .hw-word-2 {
+    font-size: clamp(5.5rem, 32vw, 14rem);
+    margin-bottom: 0.4rem;
+    animation: mob-word-right 0.55s 0.45s cubic-bezier(0.22,1,0.36,1) both;
+  }
+  /* ES / IS — accent, slides from left */
+  .hw-word-3 {
+    font-size: clamp(2.8rem, 14vw, 6.5rem);
+    animation: mob-word-left 0.55s 0.6s cubic-bezier(0.22,1,0.36,1) both;
+  }
+  /* ARTE / ART — massive, slides from right */
+  .hw-word-4 {
+    font-size: clamp(5.5rem, 32vw, 14rem);
+    animation: mob-word-right 0.55s 0.75s cubic-bezier(0.22,1,0.36,1) both;
+  }
 
   /* Hide desktop-only decorative details */
   .hero-script-brand, .hero-script,
@@ -1049,7 +1089,7 @@ body.cursor-click #c-dot  { transform: translate(-50%,-50%) scale(.7); }
   .hero-reg-plus, .hero-location,
   .mural-plaque { display: none; }
 
-  /* CTA: pill buttons anchored to the bottom */
+  /* CTA: pill buttons anchored to the bottom, animate up */
   .hero-cta-block {
     position: absolute;
     bottom: 2.5%;
@@ -1063,14 +1103,15 @@ body.cursor-click #c-dot  { transform: translate(-50%,-50%) scale(.7); }
     gap: .75rem;
     min-width: unset;
     white-space: nowrap;
+    animation: mob-cta-up 0.5s 1s ease both;
   }
   .hcta-img { display: none; }
   .hcta-primary {
     background: var(--ink);
     color: var(--cream);
-    padding: .8rem 2rem;
-    font-size: .74rem;
-    letter-spacing: .12em;
+    padding: .85rem 2.2rem;
+    font-size: .78rem;
+    letter-spacing: .13em;
     border-bottom: none;
     transition: background .22s;
   }
@@ -1079,12 +1120,18 @@ body.cursor-click #c-dot  { transform: translate(-50%,-50%) scale(.7); }
     background: transparent;
     border: 1.5px solid rgba(26,15,8,.4);
     color: var(--ink);
-    padding: .8rem 1.6rem;
-    font-size: .74rem;
+    padding: .85rem 1.8rem;
+    font-size: .78rem;
     letter-spacing: .08em;
     transition: border-color .22s, color .22s;
   }
   .hcta-secondary:hover { border-color: var(--rust); color: var(--rust); }
+
+  /* Respect reduced-motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-main-art, .hw-word-1, .hw-word-2,
+    .hw-word-3, .hw-word-4, .hero-cta-block { animation: none; }
+  }
 
   /* Sections */
   .about-section { padding: 4rem 5%; }
@@ -1116,9 +1163,12 @@ body.cursor-click #c-dot  { transform: translate(-50%,-50%) scale(.7); }
 
 /* ── 600px: phones ── */
 @media (max-width: 600px) {
-  .hero-main-img { max-height: 38svh; }
-  .hw-word-2 { font-size: clamp(3.8rem, 21vw, 8.5rem); }
-  .hw-word-4 { font-size: clamp(3.8rem, 21vw, 8.5rem); }
+  .hero-main-art { width: clamp(180px, 70vw, 320px); }
+  .hero-main-img { max-height: 44svh; }
+  .hw-word-1 { font-size: clamp(2.5rem, 13vw, 6rem); }
+  .hw-word-2 { font-size: clamp(5rem, 30vw, 12rem); }
+  .hw-word-3 { font-size: clamp(2.5rem, 13vw, 6rem); }
+  .hw-word-4 { font-size: clamp(5rem, 30vw, 12rem); }
   .origins-row { grid-template-columns: 1fr; }
   .origin-img { height: 200px; }
   .gallery-wall { grid-template-columns: 1fr; }
@@ -1130,15 +1180,15 @@ body.cursor-click #c-dot  { transform: translate(-50%,-50%) scale(.7); }
   .nav-logo { font-size: 1.05rem; letter-spacing: .15em; }
   .lang-btn { padding: .24rem .55rem; font-size: .68rem; }
 
-  /* Hero: tighter on small screens */
-  #hero { padding: calc(var(--nav-h) + 1.5rem) 0 5rem; }
-  .hero-main-art { width: clamp(130px, 50vw, 220px); margin-bottom: 1.2rem; }
-  .hero-main-img { max-height: 36svh; }
-  .hw-word-1 { font-size: clamp(1.8rem, 9.5vw, 4rem); }
-  .hw-word-2 { font-size: clamp(3.5rem, 19vw, 7.5rem); margin-bottom: 0.4rem; }
-  .hw-word-3 { font-size: clamp(1.8rem, 9.5vw, 4rem); }
-  .hw-word-4 { font-size: clamp(3.5rem, 19vw, 7.5rem); }
-  .hcta-primary, .hcta-secondary { padding: .72rem 1.4rem; font-size: .7rem; }
+  /* Hero: tighter on small screens but still bold */
+  #hero { padding: calc(var(--nav-h) + 0.8rem) 0 5rem; }
+  .hero-main-art { width: clamp(160px, 66vw, 280px); margin-bottom: 0.7rem; }
+  .hero-main-img { max-height: 42svh; }
+  .hw-word-1 { font-size: clamp(2.4rem, 12.5vw, 5.5rem); }
+  .hw-word-2 { font-size: clamp(4.5rem, 28vw, 11rem); margin-bottom: 0.25rem; }
+  .hw-word-3 { font-size: clamp(2.4rem, 12.5vw, 5.5rem); }
+  .hw-word-4 { font-size: clamp(4.5rem, 28vw, 11rem); }
+  .hcta-primary, .hcta-secondary { padding: .75rem 1.5rem; font-size: .73rem; }
 
   /* Sections */
   .about-collage { display: none; }
@@ -1165,8 +1215,10 @@ body.cursor-click #c-dot  { transform: translate(-50%,-50%) scale(.7); }
 
 /* ── 360px: smallest phones ── */
 @media (max-width: 360px) {
-  .hw-word-2 { font-size: clamp(3rem, 18vw, 6.5rem); }
-  .hw-word-4 { font-size: clamp(3rem, 18vw, 6.5rem); }
+  .hw-word-1 { font-size: clamp(2rem, 11.5vw, 4.5rem); }
+  .hw-word-2 { font-size: clamp(3.8rem, 26vw, 9rem); }
+  .hw-word-3 { font-size: clamp(2rem, 11.5vw, 4.5rem); }
+  .hw-word-4 { font-size: clamp(3.8rem, 26vw, 9rem); }
   .hcta-primary, .hcta-secondary { padding: .65rem 1.1rem; font-size: .68rem; }
   .footer-cols { grid-template-columns: 1fr; }
   .lang-btn { padding: .22rem .45rem; font-size: .65rem; }
