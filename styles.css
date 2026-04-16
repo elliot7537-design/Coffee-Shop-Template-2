@@ -948,33 +948,173 @@ body.cursor-click #c-dot  { transform: translate(-50%,-50%) scale(.7); }
 .nw-form button:hover { transform: translateX(3px); }
 .footer-bottom { display: flex; justify-content: space-between; padding-top: 1.5rem; font-size: .73rem; color: rgba(246,237,216,.28); }
 
+
 /* ═══════════════════════════════════════════════
-   RESPONSIVE
+   RESPONSIVE — all breakpoints
    ═══════════════════════════════════════════════ */
-@media (max-width: 1100px) {
-  #hero { padding: calc(var(--nav-h) + 4rem) 6% 4rem; }
-  .hero-collage .p1 { width: 160px; top: 10%; left: 2%; }
-  .hero-collage .p2 { width: 150px; top: 12%; right: 2%; }
-  .hero-collage .p3 { display: none; }
-  .mural-plaque { max-width: 210px; padding: .7rem 1rem .75rem; bottom: 3%; right: 3%; }
-  .pl-title { font-size: 1.3rem; }
-  .mural-block { height: clamp(140px, 22vh, 220px); }
-  .about-section, .visit-section { grid-template-columns: 1fr; }
-  .about-collage, .visit-imagery { min-height: 380px; }
+
+/* ── 1200px: gallery drops to 2 columns ── */
+@media (max-width: 1200px) {
   .gallery-wall { grid-template-columns: 1fr 1fr; }
   .gallery-col-3 { display: none; }
-  .footer-top { grid-template-columns: 1fr; }
-}
-@media (max-width: 768px) {
-  .nav-links { display: none; }
-  .hero-collage { display: none; }
-  .mural-plaque { display: none; }
-  .mural-block { top: 30%; }
-  .hero-sticker { top: calc(var(--nav-h) + .8rem); font-size: 1rem; padding: .4rem .9rem; }
-  .hero-title { gap: .6rem; }
-  .origins-row, .menu-grid, .events-grid, .gallery-wall { grid-template-columns: 1fr; }
   .gallery-col-1, .gallery-col-2 { margin-top: 0; }
+}
+
+/* ── 1100px: hero shrinks, two-column sections stack ── */
+@media (max-width: 1100px) {
+  /* Hero — gallery composition */
+  #hero { padding: calc(var(--nav-h) + 4rem) 6% 4rem; }
+  .hw-word-1 { font-size: clamp(3rem, 8vw, 9rem); }
+  .hw-word-2 { font-size: clamp(4.5rem, 16vw, 20rem); left: -1%; }
+  .hw-word-3 { font-size: clamp(2.5rem, 7vw, 8rem); }
+  .hw-word-4 { font-size: clamp(3.5rem, 12vw, 16rem); }
+  .hero-info { max-width: 260px; }
+  .mural-plaque { max-width: 210px; padding: .7rem 1rem; bottom: 3%; right: 3%; }
+  .pl-title { font-size: 1.3rem; }
+
+  /* Two-column sections → single column */
+  .about-section { grid-template-columns: 1fr; padding: 6rem 6%; gap: 0; }
+  .about-collage { min-height: 300px; overflow: hidden; margin-bottom: 3rem; }
+  .about-collage .ab-p1 { width: 52%; top: 0; left: 4%; }
+  .about-collage .ab-p2 { width: 46%; bottom: 0; right: 2%; }
+
+  .visit-section { grid-template-columns: 1fr; padding: 6rem 6%; gap: 0; }
+  .visit-imagery { min-height: 300px; overflow: hidden; margin-bottom: 3rem; }
+  .visit-imagery .vp1 { width: 58%; }
+  .visit-imagery .vp2 { width: 44%; }
+
+  .footer-top { grid-template-columns: 1fr; gap: 2.5rem; }
+  .footer-cols { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ── 768px: tablet portrait / mobile landscape ── */
+@media (max-width: 768px) {
+  :root { --nav-h: 60px; }
+
+  /* Nav */
+  .nav-links { display: none; }
+  #nav { padding: 0 4%; }
+  .nav-logo { font-size: 1.2rem; letter-spacing: .2em; }
+  .lang-btn { padding: .28rem .72rem; font-size: .72rem; }
+
+  /* Hero — scale big words for narrow screens */
+  .hw-word-1 { font-size: clamp(2.5rem, 7vw, 6rem); top: 5%; }
+  .hw-word-2 { font-size: clamp(4rem, 14vw, 14rem); top: 14%; left: -2%; }
+  .hw-word-3 { font-size: clamp(2rem, 6vw, 5rem); }
+  .hw-word-4 { font-size: clamp(3rem, 11vw, 10rem); }
+  .hero-script { font-size: clamp(2.5rem, 8vw, 5rem); }
+  .hero-main-img { width: clamp(180px, 50vw, 320px); }
+  .hero-info { max-width: 200px; padding: .8rem 1rem; }
+  .hero-info-desc { font-size: .78rem; }
+  .mural-plaque { display: none; }
+
+  /* Sections */
+  .about-section { padding: 4rem 5%; }
+  .about-collage { min-height: 240px; }
+  .coffee-section { padding: 5rem 5%; }
+  .art-section { padding: 4rem 5%; }
+  .art-intro { margin-bottom: 3rem; }
+  .events-section { padding: 5rem 5%; }
+  .visit-section { padding: 4rem 5%; }
+  .visit-imagery { min-height: 240px; }
+  .footer-cta { padding: 4rem 5%; }
+  .footer { padding: 3rem 5% 1.5rem; }
+
+  /* Origins, menu, events → 1 column */
+  .origins-row { grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+  .origin-img { height: 180px; }
+  .menu-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .menu-board { padding: 1.4rem 1.6rem; }
+  .menu-board-title { font-size: 1.5rem; }
+  .events-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+
+  /* Gallery */
+  .gallery-wall { grid-template-columns: 1fr 1fr; }
+  .gallery-col-3 { display: flex; }
+  .gallery-wall { margin-bottom: 3rem; }
+
+  /* Drinks */
+  .drinks-section { padding: 4rem 5%; }
+  .drinks-row { padding: 1rem 5% 1.5rem; margin: 0 -5%; gap: .9rem; }
+  .drink-card { flex-basis: clamp(200px, 72vw, 260px); }
+
+  /* Footer */
   .footer-cols { grid-template-columns: 1fr 1fr; }
-  .footer-bottom { flex-direction: column; gap: .4rem; }
-  .menu-board { padding: 1.5rem; }
+  .footer-bottom { flex-direction: column; gap: .4rem; text-align: center; }
+
+  /* Stats */
+  .stat-row { gap: 1.5rem 2rem; }
+
+  /* CTA */
+  .cta-btns { justify-content: center; flex-wrap: wrap; }
+}
+
+/* ── 600px: smaller tablets / large phones ── */
+@media (max-width: 600px) {
+  .origins-row { grid-template-columns: 1fr; }
+  .origin-img { height: 200px; }
+  .gallery-wall { grid-template-columns: 1fr; }
+  .gallery-col-3 { display: flex; }
+}
+
+/* ── 480px: mobile portrait ── */
+@media (max-width: 480px) {
+  :root { --nav-h: 56px; }
+
+  /* Nav: prevent logo/toggle overlap */
+  .nav-logo { font-size: 1.05rem; letter-spacing: .15em; }
+  .lang-btn { padding: .24rem .55rem; font-size: .68rem; }
+
+  /* Hero words — very small screens */
+  .hw-word-1 { font-size: clamp(2rem, 6vw, 4rem); top: 4%; }
+  .hw-word-2 { font-size: clamp(3.5rem, 13vw, 8rem); top: 12%; }
+  .hw-word-3 { font-size: clamp(1.8rem, 5vw, 3.5rem); }
+  .hw-word-4 { font-size: clamp(2.5rem, 10vw, 7rem); }
+  .hero-main-img { width: clamp(150px, 55vw, 260px); }
+  .hero-info { display: none; }
+  .hero-script-brand { font-size: clamp(2rem, 6vw, 3.5rem); }
+
+  /* Hide collages on small phones to remove white gaps */
+  .about-collage { display: none; }
+  .about-section { padding: 3.5rem 4%; }
+  .visit-imagery { display: none; }
+  .visit-section { padding: 3.5rem 4%; }
+
+  /* Sections: tight padding */
+  .coffee-section { padding: 4rem 4%; }
+  .art-section { padding: 3.5rem 4%; }
+  .events-section { padding: 4rem 4%; }
+  .footer-cta { padding: 3rem 4%; }
+  .footer { padding: 2.5rem 4% 1.5rem; }
+
+  /* Stats: 2×2 grid */
+  .stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 1.5rem; padding-top: 1.5rem; }
+  .stat-num { font-size: 2.1rem; }
+  .stat-unit { font-size: 1.7rem; }
+
+  /* Footer */
+  .footer-top { gap: 2rem; }
+  .footer-cols { grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+  .footer-bottom { padding-top: 1.2rem; }
+
+  /* Gallery: single column */
+  .gallery-wall { grid-template-columns: 1fr; }
+
+  /* Art quote */
+  .art-quote { padding: 2rem 0; }
+
+  /* Event cards */
+  .event-card { padding: 1.3rem; }
+  .menu-board { padding: 1.1rem; }
+
+  /* CTA */
+  .cta-btns { flex-direction: column; align-items: center; }
+}
+
+/* ── 360px: smallest phones ── */
+@media (max-width: 360px) {
+  .footer-cols { grid-template-columns: 1fr; }
+  .pill-btn { padding: .65rem 1.4rem; font-size: .8rem; }
+  .lang-btn { padding: .22rem .45rem; font-size: .65rem; }
+  .hw-word-2 { font-size: clamp(3rem, 12vw, 6rem); }
 }
