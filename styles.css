@@ -962,7 +962,6 @@ body.cursor-click #c-dot  { transform: translate(-50%,-50%) scale(.7); }
 
 /* ── 1100px: hero shrinks, two-column sections stack ── */
 @media (max-width: 1100px) {
-  /* Hero — gallery composition */
   #hero { padding: calc(var(--nav-h) + 4rem) 6% 4rem; }
   .hw-word-1 { font-size: clamp(3rem, 8vw, 9rem); }
   .hw-word-2 { font-size: clamp(4.5rem, 16vw, 20rem); left: -1%; }
@@ -971,23 +970,19 @@ body.cursor-click #c-dot  { transform: translate(-50%,-50%) scale(.7); }
   .hero-info { max-width: 260px; }
   .mural-plaque { max-width: 210px; padding: .7rem 1rem; bottom: 3%; right: 3%; }
   .pl-title { font-size: 1.3rem; }
-
-  /* Two-column sections → single column */
   .about-section { grid-template-columns: 1fr; padding: 6rem 6%; gap: 0; }
   .about-collage { min-height: 300px; overflow: hidden; margin-bottom: 3rem; }
   .about-collage .ab-p1 { width: 52%; top: 0; left: 4%; }
   .about-collage .ab-p2 { width: 46%; bottom: 0; right: 2%; }
-
   .visit-section { grid-template-columns: 1fr; padding: 6rem 6%; gap: 0; }
   .visit-imagery { min-height: 300px; overflow: hidden; margin-bottom: 3rem; }
   .visit-imagery .vp1 { width: 58%; }
   .visit-imagery .vp2 { width: 44%; }
-
   .footer-top { grid-template-columns: 1fr; gap: 2.5rem; }
   .footer-cols { grid-template-columns: repeat(3, 1fr); }
 }
 
-/* ── 768px: tablet portrait / mobile landscape ── */
+/* ── 768px: mobile hero redesign + section reflow ── */
 @media (max-width: 768px) {
   :root { --nav-h: 60px; }
 
@@ -997,16 +992,106 @@ body.cursor-click #c-dot  { transform: translate(-50%,-50%) scale(.7); }
   .nav-logo { font-size: 1.2rem; letter-spacing: .2em; }
   .lang-btn { padding: .28rem .72rem; font-size: .72rem; }
 
-  /* Hero — scale big words for narrow screens */
-  .hw-word-1 { font-size: clamp(2.5rem, 7vw, 6rem); top: 5%; }
-  .hw-word-2 { font-size: clamp(4rem, 14vw, 14rem); top: 14%; left: -2%; }
-  .hw-word-3 { font-size: clamp(2rem, 6vw, 5rem); }
-  .hw-word-4 { font-size: clamp(3rem, 11vw, 10rem); }
-  .hero-script { font-size: clamp(2.5rem, 8vw, 5rem); }
-  .hero-main-img { width: clamp(180px, 50vw, 320px); }
-  .hero-info { max-width: 200px; padding: .8rem 1rem; }
-  .hero-info-desc { font-size: .78rem; }
-  .mural-plaque { display: none; }
+  /* ── MOBILE HERO: painting right, words stack left ──
+     Creates an editorial magazine-cover composition:
+     bold Fraunces type frames the portrait on the left
+     while the painting anchors the right side.         */
+
+  /* Painting: move from dead-center to right side */
+  .hero-main-art {
+    top: 8%;
+    right: 2%;
+    left: auto;
+    transform: none;
+  }
+  .hero-main-img {
+    width: clamp(160px, 44vw, 310px);
+    max-height: 56svh;
+  }
+
+  /* Hide desktop-only editorial details */
+  .hero-info, .hero-label-right, .hero-reg-plus { display: none; }
+
+  /* Bruma brand: top-left instead of top-center */
+  .hero-script-brand {
+    left: 4%;
+    transform: none;
+    font-size: clamp(1.5rem, 5vw, 2.4rem);
+    top: 2.5%;
+    color: var(--plum);
+  }
+
+  /* "EL / THE" — top-left anchor */
+  .hw-word-1 {
+    font-size: clamp(2.8rem, 12vw, 6rem);
+    top: 9%;
+    left: 3%;
+  }
+  /* "CAFÉ" — dominant word, bleeds left edge */
+  .hw-word-2 {
+    font-size: clamp(5rem, 23vw, 12rem);
+    top: 18%;
+    left: -1%;
+  }
+  /* "ES / IS" — sits below CAFÉ, left */
+  .hw-word-3 {
+    font-size: clamp(2.5rem, 11vw, 5.5rem);
+    bottom: 22%;
+    left: 4%;
+    right: auto;
+  }
+  /* "ARTE / ART" — sweeps across the bottom */
+  .hw-word-4 {
+    font-size: clamp(4.5rem, 21vw, 10rem);
+    bottom: 11%;
+    right: -1%;
+    left: auto;
+  }
+  /* "Siempre" italic accent — floats between ES and ARTE */
+  .hero-script {
+    font-size: clamp(1.4rem, 5.5vw, 2.8rem);
+    right: 5%;
+    bottom: 27%;
+  }
+
+  /* CTA: swap dark museum card for clean pill buttons */
+  .hero-cta-block {
+    bottom: 3%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: transparent;
+    padding: 0;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: .75rem;
+    min-width: unset;
+    white-space: nowrap;
+  }
+  .hcta-img { display: none; }
+  .hcta-primary {
+    background: var(--ink);
+    color: var(--cream);
+    padding: .8rem 1.9rem;
+    font-size: .74rem;
+    letter-spacing: .12em;
+    border-bottom: none;
+    transition: background .22s;
+  }
+  .hcta-primary:hover { background: var(--plum); }
+  .hcta-secondary {
+    background: transparent;
+    border: 1.5px solid rgba(26,15,8,.4);
+    color: var(--ink);
+    padding: .8rem 1.6rem;
+    font-size: .74rem;
+    letter-spacing: .08em;
+    transition: border-color .22s, color .22s;
+  }
+  .hcta-secondary:hover { border-color: var(--rust); color: var(--rust); }
+
+  /* Location line: hidden — CTAs fill that zone */
+  .hero-location { display: none; }
 
   /* Sections */
   .about-section { padding: 4rem 5%; }
@@ -1019,68 +1104,63 @@ body.cursor-click #c-dot  { transform: translate(-50%,-50%) scale(.7); }
   .visit-imagery { min-height: 240px; }
   .footer-cta { padding: 4rem 5%; }
   .footer { padding: 3rem 5% 1.5rem; }
-
-  /* Origins, menu, events → 1 column */
   .origins-row { grid-template-columns: 1fr 1fr; gap: 1.2rem; }
   .origin-img { height: 180px; }
   .menu-grid { grid-template-columns: 1fr; gap: 1.5rem; }
   .menu-board { padding: 1.4rem 1.6rem; }
   .menu-board-title { font-size: 1.5rem; }
   .events-grid { grid-template-columns: 1fr; gap: 1.2rem; }
-
-  /* Gallery */
-  .gallery-wall { grid-template-columns: 1fr 1fr; }
+  .gallery-wall { grid-template-columns: 1fr 1fr; margin-bottom: 3rem; }
   .gallery-col-3 { display: flex; }
-  .gallery-wall { margin-bottom: 3rem; }
-
-  /* Drinks */
   .drinks-section { padding: 4rem 5%; }
   .drinks-row { padding: 1rem 5% 1.5rem; margin: 0 -5%; gap: .9rem; }
   .drink-card { flex-basis: clamp(200px, 72vw, 260px); }
-
-  /* Footer */
   .footer-cols { grid-template-columns: 1fr 1fr; }
   .footer-bottom { flex-direction: column; gap: .4rem; text-align: center; }
-
-  /* Stats */
   .stat-row { gap: 1.5rem 2rem; }
-
-  /* CTA */
   .cta-btns { justify-content: center; flex-wrap: wrap; }
+  .mural-plaque { display: none; }
 }
 
-/* ── 600px: smaller tablets / large phones ── */
+/* ── 600px: larger phones — tighten hero composition ── */
 @media (max-width: 600px) {
+  /* Hero: scale painting down slightly, tighten type */
+  .hero-main-img { width: clamp(145px, 42vw, 240px); max-height: 52svh; }
+  .hw-word-2 { font-size: clamp(4.5rem, 24vw, 11rem); }
+  .hw-word-4 { font-size: clamp(4rem, 22vw, 9rem); }
+  .hero-cta-block { gap: .6rem; }
+  .hcta-primary, .hcta-secondary { padding: .75rem 1.5rem; font-size: .72rem; }
+
+  /* Other sections */
   .origins-row { grid-template-columns: 1fr; }
   .origin-img { height: 200px; }
   .gallery-wall { grid-template-columns: 1fr; }
-  .gallery-col-3 { display: flex; }
 }
 
-/* ── 480px: mobile portrait ── */
+/* ── 480px: mobile portrait — smallest common size ── */
 @media (max-width: 480px) {
   :root { --nav-h: 56px; }
-
-  /* Nav: prevent logo/toggle overlap */
   .nav-logo { font-size: 1.05rem; letter-spacing: .15em; }
   .lang-btn { padding: .24rem .55rem; font-size: .68rem; }
 
-  /* Hero words — very small screens */
-  .hw-word-1 { font-size: clamp(2rem, 6vw, 4rem); top: 4%; }
-  .hw-word-2 { font-size: clamp(3.5rem, 13vw, 8rem); top: 12%; }
-  .hw-word-3 { font-size: clamp(1.8rem, 5vw, 3.5rem); }
-  .hw-word-4 { font-size: clamp(2.5rem, 10vw, 7rem); }
-  .hero-main-img { width: clamp(150px, 55vw, 260px); }
-  .hero-info { display: none; }
-  .hero-script-brand { font-size: clamp(2rem, 6vw, 3.5rem); }
+  /* Hero: tighter painting, refined word scale */
+  .hero-main-art { top: 8%; right: 2%; }
+  .hero-main-img { width: clamp(130px, 40vw, 200px); max-height: 50svh; }
+  .hero-script-brand { font-size: clamp(1.3rem, 4.5vw, 1.9rem); }
+  .hw-word-1 { font-size: clamp(2.4rem, 11vw, 5rem); top: 9%; }
+  .hw-word-2 { font-size: clamp(4rem, 22vw, 9rem); top: 17%; }
+  .hw-word-3 { font-size: clamp(2.1rem, 10vw, 4.5rem); bottom: 21%; }
+  .hw-word-4 { font-size: clamp(3.6rem, 20vw, 8rem); bottom: 10%; }
+  .hero-script { font-size: clamp(1.2rem, 4.8vw, 2.2rem); bottom: 25%; right: 4%; }
+  .hcta-primary, .hcta-secondary { padding: .72rem 1.3rem; font-size: .7rem; }
 
-  /* Hide collages on small phones to remove white gaps */
+  /* Collages: hidden to remove white-space gaps */
   .about-collage { display: none; }
   .about-section { padding: 3.5rem 4%; }
   .visit-imagery { display: none; }
   .visit-section { padding: 3.5rem 4%; }
 
-  /* Sections: tight padding */
+  /* Sections */
   .coffee-section { padding: 4rem 4%; }
   .art-section { padding: 3.5rem 4%; }
   .events-section { padding: 4rem 4%; }
@@ -1097,24 +1177,21 @@ body.cursor-click #c-dot  { transform: translate(-50%,-50%) scale(.7); }
   .footer-cols { grid-template-columns: 1fr 1fr; gap: 1.2rem; }
   .footer-bottom { padding-top: 1.2rem; }
 
-  /* Gallery: single column */
+  /* Gallery */
   .gallery-wall { grid-template-columns: 1fr; }
-
-  /* Art quote */
   .art-quote { padding: 2rem 0; }
-
-  /* Event cards */
   .event-card { padding: 1.3rem; }
   .menu-board { padding: 1.1rem; }
-
-  /* CTA */
   .cta-btns { flex-direction: column; align-items: center; }
 }
 
 /* ── 360px: smallest phones ── */
 @media (max-width: 360px) {
+  .hero-main-img { width: clamp(120px, 38vw, 175px); }
+  .hw-word-2 { font-size: clamp(3.5rem, 21vw, 8rem); }
+  .hw-word-4 { font-size: clamp(3rem, 19vw, 7rem); }
+  .hcta-primary, .hcta-secondary { padding: .65rem 1.1rem; font-size: .68rem; }
   .footer-cols { grid-template-columns: 1fr; }
   .pill-btn { padding: .65rem 1.4rem; font-size: .8rem; }
   .lang-btn { padding: .22rem .45rem; font-size: .65rem; }
-  .hw-word-2 { font-size: clamp(3rem, 12vw, 6rem); }
 }
