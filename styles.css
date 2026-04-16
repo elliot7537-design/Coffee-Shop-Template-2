@@ -982,81 +982,77 @@ body.cursor-click #c-dot  { transform: translate(-50%,-50%) scale(.7); }
   .footer-cols { grid-template-columns: repeat(3, 1fr); }
 }
 
-/* ── 768px: mobile hero redesign + section reflow ── */
+/* ── MOBILE HERO RESET (≤768px)
+   Overrides the non-media 760px block that
+   scatters words around the screen.             ── */
+@media (max-width: 768px) {
+  /* Undo top/bottom positions set by the 760px block */
+  .hw-word-1 { top: auto; bottom: auto; }
+  .hw-word-2 { top: auto; bottom: auto; }
+  .hw-word-3 { top: auto; bottom: auto; }
+  .hw-word-4 { top: auto; bottom: auto; }
+  .hero-cta-block { bottom: auto; left: auto; transform: none; min-width: unset; }
+}
+
+/* ── 768px: section reflow + hero flex layout ── */
 @media (max-width: 768px) {
   :root { --nav-h: 60px; }
-
-  /* Nav */
   .nav-links { display: none; }
   #nav { padding: 0 4%; }
   .nav-logo { font-size: 1.2rem; letter-spacing: .2em; }
   .lang-btn { padding: .28rem .72rem; font-size: .72rem; }
 
-  /* ── MOBILE HERO: painting right, words stack left ──
-     Creates an editorial magazine-cover composition:
-     bold Fraunces type frames the portrait on the left
-     while the painting anchors the right side.         */
+  /* ── MOBILE HERO: flex column, everything centered ──
+     Hero becomes a simple poster: portrait on top,
+     words stacked below, pill CTAs at the bottom.    */
+  #hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: calc(var(--nav-h) + 2.5rem) 0 5.5rem;
+    min-height: 100svh;
+    overflow: hidden;
+  }
 
-  /* Painting: move from dead-center to right side */
+  /* Painting: centered, full-width constrained portrait */
   .hero-main-art {
-    top: 8%;
-    right: 2%;
-    left: auto;
+    position: relative;
+    top: auto; left: auto; right: auto; bottom: auto;
     transform: none;
+    width: clamp(150px, 54vw, 280px);
+    flex-shrink: 0;
+    margin-bottom: 1.8rem;
   }
   .hero-main-img {
-    width: clamp(160px, 44vw, 310px);
-    max-height: 56svh;
+    width: 100%;
+    max-height: 40svh;
+    object-fit: contain;
   }
 
-  /* Hide desktop-only editorial details */
-  .hero-info, .hero-label-right, .hero-reg-plus { display: none; }
-
-  /* Bruma brand: top-left instead of top-center */
-  .hero-script-brand {
-    left: 4%;
+  /* Words: centered vertical stack, join the flex flow */
+  .hw-word-1, .hw-word-2, .hw-word-3, .hw-word-4 {
+    position: relative;
+    top: auto; left: auto; right: auto; bottom: auto;
     transform: none;
-    font-size: clamp(1.5rem, 5vw, 2.4rem);
-    top: 2.5%;
-    color: var(--plum);
+    text-align: center;
+    width: 100%;
+    line-height: 0.88;
   }
+  .hw-word-1 { font-size: clamp(2rem, 10vw, 5rem); }
+  .hw-word-2 { font-size: clamp(4rem, 20vw, 9rem); margin-bottom: 0.6rem; }
+  .hw-word-3 { font-size: clamp(2rem, 10vw, 5rem); }
+  .hw-word-4 { font-size: clamp(4rem, 20vw, 9rem); }
 
-  /* "EL / THE" — top-left anchor */
-  .hw-word-1 {
-    font-size: clamp(2.8rem, 12vw, 6rem);
-    top: 9%;
-    left: 3%;
-  }
-  /* "CAFÉ" — dominant word, bleeds left edge */
-  .hw-word-2 {
-    font-size: clamp(5rem, 23vw, 12rem);
-    top: 18%;
-    left: -1%;
-  }
-  /* "ES / IS" — sits below CAFÉ, left */
-  .hw-word-3 {
-    font-size: clamp(2.5rem, 11vw, 5.5rem);
-    bottom: 22%;
-    left: 4%;
-    right: auto;
-  }
-  /* "ARTE / ART" — sweeps across the bottom */
-  .hw-word-4 {
-    font-size: clamp(4.5rem, 21vw, 10rem);
-    bottom: 11%;
-    right: -1%;
-    left: auto;
-  }
-  /* "Siempre" italic accent — floats between ES and ARTE */
-  .hero-script {
-    font-size: clamp(1.4rem, 5.5vw, 2.8rem);
-    right: 5%;
-    bottom: 27%;
-  }
+  /* Hide desktop-only decorative details */
+  .hero-script-brand, .hero-script,
+  .hero-info, .hero-label-right,
+  .hero-reg-plus, .hero-location,
+  .mural-plaque { display: none; }
 
-  /* CTA: swap dark museum card for clean pill buttons */
+  /* CTA: pill buttons anchored to the bottom */
   .hero-cta-block {
-    bottom: 3%;
+    position: absolute;
+    bottom: 2.5%;
     left: 50%;
     transform: translateX(-50%);
     background: transparent;
@@ -1072,7 +1068,7 @@ body.cursor-click #c-dot  { transform: translate(-50%,-50%) scale(.7); }
   .hcta-primary {
     background: var(--ink);
     color: var(--cream);
-    padding: .8rem 1.9rem;
+    padding: .8rem 2rem;
     font-size: .74rem;
     letter-spacing: .12em;
     border-bottom: none;
@@ -1089,9 +1085,6 @@ body.cursor-click #c-dot  { transform: translate(-50%,-50%) scale(.7); }
     transition: border-color .22s, color .22s;
   }
   .hcta-secondary:hover { border-color: var(--rust); color: var(--rust); }
-
-  /* Location line: hidden — CTAs fill that zone */
-  .hero-location { display: none; }
 
   /* Sections */
   .about-section { padding: 4rem 5%; }
@@ -1119,65 +1112,50 @@ body.cursor-click #c-dot  { transform: translate(-50%,-50%) scale(.7); }
   .footer-bottom { flex-direction: column; gap: .4rem; text-align: center; }
   .stat-row { gap: 1.5rem 2rem; }
   .cta-btns { justify-content: center; flex-wrap: wrap; }
-  .mural-plaque { display: none; }
 }
 
-/* ── 600px: larger phones — tighten hero composition ── */
+/* ── 600px: phones ── */
 @media (max-width: 600px) {
-  /* Hero: scale painting down slightly, tighten type */
-  .hero-main-img { width: clamp(145px, 42vw, 240px); max-height: 52svh; }
-  .hw-word-2 { font-size: clamp(4.5rem, 24vw, 11rem); }
-  .hw-word-4 { font-size: clamp(4rem, 22vw, 9rem); }
-  .hero-cta-block { gap: .6rem; }
-  .hcta-primary, .hcta-secondary { padding: .75rem 1.5rem; font-size: .72rem; }
-
-  /* Other sections */
+  .hero-main-img { max-height: 38svh; }
+  .hw-word-2 { font-size: clamp(3.8rem, 21vw, 8.5rem); }
+  .hw-word-4 { font-size: clamp(3.8rem, 21vw, 8.5rem); }
   .origins-row { grid-template-columns: 1fr; }
   .origin-img { height: 200px; }
   .gallery-wall { grid-template-columns: 1fr; }
 }
 
-/* ── 480px: mobile portrait — smallest common size ── */
+/* ── 480px: small phones ── */
 @media (max-width: 480px) {
   :root { --nav-h: 56px; }
   .nav-logo { font-size: 1.05rem; letter-spacing: .15em; }
   .lang-btn { padding: .24rem .55rem; font-size: .68rem; }
 
-  /* Hero: tighter painting, refined word scale */
-  .hero-main-art { top: 8%; right: 2%; }
-  .hero-main-img { width: clamp(130px, 40vw, 200px); max-height: 50svh; }
-  .hero-script-brand { font-size: clamp(1.3rem, 4.5vw, 1.9rem); }
-  .hw-word-1 { font-size: clamp(2.4rem, 11vw, 5rem); top: 9%; }
-  .hw-word-2 { font-size: clamp(4rem, 22vw, 9rem); top: 17%; }
-  .hw-word-3 { font-size: clamp(2.1rem, 10vw, 4.5rem); bottom: 21%; }
-  .hw-word-4 { font-size: clamp(3.6rem, 20vw, 8rem); bottom: 10%; }
-  .hero-script { font-size: clamp(1.2rem, 4.8vw, 2.2rem); bottom: 25%; right: 4%; }
-  .hcta-primary, .hcta-secondary { padding: .72rem 1.3rem; font-size: .7rem; }
+  /* Hero: tighter on small screens */
+  #hero { padding: calc(var(--nav-h) + 1.5rem) 0 5rem; }
+  .hero-main-art { width: clamp(130px, 50vw, 220px); margin-bottom: 1.2rem; }
+  .hero-main-img { max-height: 36svh; }
+  .hw-word-1 { font-size: clamp(1.8rem, 9.5vw, 4rem); }
+  .hw-word-2 { font-size: clamp(3.5rem, 19vw, 7.5rem); margin-bottom: 0.4rem; }
+  .hw-word-3 { font-size: clamp(1.8rem, 9.5vw, 4rem); }
+  .hw-word-4 { font-size: clamp(3.5rem, 19vw, 7.5rem); }
+  .hcta-primary, .hcta-secondary { padding: .72rem 1.4rem; font-size: .7rem; }
 
-  /* Collages: hidden to remove white-space gaps */
+  /* Sections */
   .about-collage { display: none; }
   .about-section { padding: 3.5rem 4%; }
   .visit-imagery { display: none; }
   .visit-section { padding: 3.5rem 4%; }
-
-  /* Sections */
   .coffee-section { padding: 4rem 4%; }
   .art-section { padding: 3.5rem 4%; }
   .events-section { padding: 4rem 4%; }
   .footer-cta { padding: 3rem 4%; }
   .footer { padding: 2.5rem 4% 1.5rem; }
-
-  /* Stats: 2×2 grid */
   .stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 1.5rem; padding-top: 1.5rem; }
   .stat-num { font-size: 2.1rem; }
   .stat-unit { font-size: 1.7rem; }
-
-  /* Footer */
   .footer-top { gap: 2rem; }
   .footer-cols { grid-template-columns: 1fr 1fr; gap: 1.2rem; }
   .footer-bottom { padding-top: 1.2rem; }
-
-  /* Gallery */
   .gallery-wall { grid-template-columns: 1fr; }
   .art-quote { padding: 2rem 0; }
   .event-card { padding: 1.3rem; }
@@ -1187,11 +1165,9 @@ body.cursor-click #c-dot  { transform: translate(-50%,-50%) scale(.7); }
 
 /* ── 360px: smallest phones ── */
 @media (max-width: 360px) {
-  .hero-main-img { width: clamp(120px, 38vw, 175px); }
-  .hw-word-2 { font-size: clamp(3.5rem, 21vw, 8rem); }
-  .hw-word-4 { font-size: clamp(3rem, 19vw, 7rem); }
+  .hw-word-2 { font-size: clamp(3rem, 18vw, 6.5rem); }
+  .hw-word-4 { font-size: clamp(3rem, 18vw, 6.5rem); }
   .hcta-primary, .hcta-secondary { padding: .65rem 1.1rem; font-size: .68rem; }
   .footer-cols { grid-template-columns: 1fr; }
-  .pill-btn { padding: .65rem 1.4rem; font-size: .8rem; }
   .lang-btn { padding: .22rem .45rem; font-size: .65rem; }
 }
